@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/publish/main",
+    "pages/notice/main",
+    "pages/me/main",
+    "pages/user/main",
+    "pages/reply/main",
+    "pages/collection/main",
+    "pages/member/main",
+    "pages/detail/main"
+  ],
+  "subPackages": [],
+  "tabBar": {
+    "selectedColor": "#41b883",
+    "list": [
+      {
+        "pagePath": "pages/index/main",
+        "text": "首页",
+        "iconPath": "static/home.png",
+        "selectedIconPath": "static/home.png"
+      },
+      {
+        "pagePath": "pages/publish/main",
+        "text": "发帖",
+        "iconPath": "static/edit.png",
+        "selectedIconPath": "static/edit.png"
+      },
+      {
+        "pagePath": "pages/notice/main",
+        "text": "通知",
+        "iconPath": "static/edit.png",
+        "selectedIconPath": "static/edit.png"
+      },
+      {
+        "pagePath": "pages/me/main",
+        "text": "我",
+        "iconPath": "static/user-o.png",
+        "selectedIconPath": "static/user-o.png"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap23.json"
+}

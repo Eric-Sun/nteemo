@@ -1,0 +1,103 @@
+{
+  "pages": [
+    {
+		"path":"pages/index/main",
+		"style": {
+			"navigationBarTitleText": "首页"
+		}
+	},
+	{
+		"path":"pages/publish/main",
+		"style": {
+			"navigationBarTitleText": "发布"
+		}
+	},
+	{
+		"path":"pages/notice/main",
+		"style": {
+			"navigationBarTitleText": "通知"
+		}
+	},
+	{
+		"path":"pages/me/main",
+		"style": {
+			"navigationBarTitleText": "我的"
+		}
+	},
+	{
+		"path":"pages/user/main",
+		"style": {
+			"navigationBarTitleText": "他的"
+		}
+	},
+	{
+		"path":"pages/reply/main",
+		"style": {
+			"navigationBarTitleText": "回复"
+		}
+	},
+	{
+		"path":"pages/collection/main",
+		"style": {
+			"navigationBarTitleText": "收藏"
+		}
+	},
+	{
+		"path":"pages/member/main",
+		"style": {
+			"navigationBarTitleText": "会员"
+		}
+	},
+	{
+		"path":"pages/detail/main",
+		"style": {
+			"navigationBarTitleText": "帖子"
+		}
+	}
+    // "pages/detail/main",
+    // "pages/list/main",
+    // "pages/notice/main",
+    // "pages/me/main",
+    // "pages/publish/main",
+    // "pages/user/main",
+    // "pages/reply/main",
+    // "pages/collection/main",
+    // "pages/member/main"
+
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#41b883",
+    "list": [
+      {
+        "pagePath": "pages/index/main",
+        "text": "首页",
+        "iconPath": "static/home.png",
+        "selectedIconPath": "static/home.png"
+      },
+      {
+        "pagePath": "pages/publish/main",
+        "text": "发帖",
+        "iconPath": "static/edit.png",
+        "selectedIconPath": "static/edit.png"
+      },
+      {
+        "pagePath": "pages/notice/main",
+        "text": "通知",
+        "iconPath": "static/edit.png",
+        "selectedIconPath": "static/edit.png"
+      },
+      {
+        "pagePath": "pages/me/main",
+        "text": "我",
+        "iconPath": "static/user-o.png",
+        "selectedIconPath": "static/user-o.png"
+      }
+    ]
+  }
+}

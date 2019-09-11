@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "会员",
+  "usingComponents": {
+    "author-head": "/components/authorHead",
+    "login": "/components/login"
+  }
+}

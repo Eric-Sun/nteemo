@@ -1,0 +1,1 @@
+<view data-event-opts="{{[['tap',[['closeModal',['$event']]]]]}}" class="mask _div data-v-6cfa2f33" catchtap="__e"><view class="container _div data-v-6cfa2f33"><view data-event-opts="{{[['tap',[['deletePost',['$event']]]]]}}" class="delete _div data-v-6cfa2f33" catchtap="__e">删除</view></view></view>

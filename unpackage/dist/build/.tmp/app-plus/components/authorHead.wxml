@@ -1,0 +1,1 @@
+<view class="header _div data-v-db36d9d0"><image class="img _img data-v-db36d9d0" src="{{user&&user.avatarUrl}}"></image><label class="span _span data-v-db36d9d0">{{user&&user.nickName}}</label></view>
