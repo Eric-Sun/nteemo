@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "回复",
-  "usingComponents": {
-    "send-reply": "/components/sendReply",
-    "login": "/components/login"
-  }
-}

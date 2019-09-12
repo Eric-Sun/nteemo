@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "我的",
-  "usingComponents": {
-    "author-head": "/components/authorHead",
-    "login": "/components/login"
-  }
-}

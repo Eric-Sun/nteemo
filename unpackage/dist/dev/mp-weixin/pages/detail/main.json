@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "帖子",
-  "usingComponents": {
-    "send-reply": "/components/sendReply",
-    "login": "/components/login",
-    "login-tips": "/components/loginTips"
-  }
-}

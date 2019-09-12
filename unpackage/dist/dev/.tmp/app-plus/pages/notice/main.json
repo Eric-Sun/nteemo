@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "通知",
-  "usingComponents": {
-    "login": "/components/login",
-    "card": "/components/card"
-  }
-}

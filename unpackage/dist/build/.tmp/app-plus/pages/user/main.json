@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "他的",
-  "usingComponents": {
-    "card": "/components/card",
-    "author-head": "/components/authorHead"
-  }
-}
