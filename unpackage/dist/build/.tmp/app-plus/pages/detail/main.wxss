@@ -24,10 +24,10 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.container.data-v-4bc4a442 {
+.container.data-v-dfefc526 {
   height: 100vh;
 }
-.container .head.data-v-4bc4a442 {
+.container .head.data-v-dfefc526 {
     background-color: white;
     display: -webkit-box;
     display: -webkit-flex;
@@ -38,13 +38,13 @@
         -ms-flex-align: center;
             align-items: center;
 }
-.container .head .head-img.data-v-4bc4a442 {
+.container .head .head-img.data-v-dfefc526 {
       border-radius: 45rpx;
       width: 75rpx;
       height: 75rpx;
       margin-left: 20rpx;
 }
-.container .head .info.data-v-4bc4a442 {
+.container .head .info.data-v-dfefc526 {
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
       -webkit-flex-direction: column;
@@ -56,15 +56,15 @@
       display: flex;
       margin-left: 26rpx;
 }
-.container .head .info .time.data-v-4bc4a442 {
+.container .head .info .time.data-v-dfefc526 {
         font-size: 25rpx;
         color: #888;
 }
-.container .body.data-v-4bc4a442 {
+.container .body.data-v-dfefc526 {
     height: 90vh;
     width: 100vw;
 }
-.container .body .imgs.data-v-4bc4a442 {
+.container .body .imgs.data-v-dfefc526 {
       padding-left: 30rpx;
       margin-top: 5rpx;
       font-size: 35rpx;
@@ -72,20 +72,20 @@
       text-align: center;
       vertical-align: middle;
 }
-.container .body .imgs .img.data-v-4bc4a442 {
+.container .body .imgs .img.data-v-dfefc526 {
         margin-right: 5rpx;
         width: 210rpx;
         height: 210rpx;
 }
-.container .body .title.data-v-4bc4a442 {
+.container .body .title.data-v-dfefc526 {
       background-color: white;
       padding-left: 30rpx;
 }
-.container .body .title .big.data-v-4bc4a442 {
+.container .body .title .big.data-v-dfefc526 {
         font-size: 40rpx;
         font-weight: 900;
 }
-.container .body .content.data-v-4bc4a442 {
+.container .body .content.data-v-dfefc526 {
       white-space: pre-line;
       text-align: justify;
       text-justify: inter-ideograph;
@@ -94,16 +94,16 @@
       padding-right: 30rpx;
       font-size: 30rpx;
 }
-.container .body .reply.data-v-4bc4a442 {
+.container .body .reply.data-v-dfefc526 {
       background-color: white;
       margin-bottom: 20rpx;
 }
-.container .body .reply .get-more-tips.data-v-4bc4a442 {
+.container .body .reply .get-more-tips.data-v-dfefc526 {
         text-align: center;
         font-size: 30rpx;
         padding-bottom: 70rpx;
 }
-.container .body .reply .reply-title.data-v-4bc4a442 {
+.container .body .reply .reply-title.data-v-dfefc526 {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -120,32 +120,32 @@
         margin-bottom: 10rpx;
         margin-top: 10rpx;
 }
-.container .body .reply .reply-title .reply-length.data-v-4bc4a442 {
+.container .body .reply .reply-title .reply-length.data-v-dfefc526 {
           font-size: 30rpx;
           margin-left: 25rpx;
           font-weight: lighter;
 }
-.container .body .reply .reply-title .change-reply-search-type.data-v-4bc4a442 {
+.container .body .reply .reply-title .change-reply-search-type.data-v-dfefc526 {
           font-size: 30rpx;
           margin-left: 25rpx;
           margin-right: 20rpx;
           font-weight: lighter;
 }
-.container .body .reply .reply-container.data-v-4bc4a442 {
+.container .body .reply .reply-container.data-v-dfefc526 {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
 }
-.container .body .reply .reply-container .reply-head.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-head.data-v-dfefc526 {
           margin-left: 25rpx;
 }
-.container .body .reply .reply-container .reply-head .head-img.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-head .head-img.data-v-dfefc526 {
             border-radius: 45rpx;
             width: 75rpx;
             height: 75rpx;
 }
-.container .body .reply .reply-container .reply-info.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-info.data-v-dfefc526 {
           display: -webkit-box;
           display: -webkit-flex;
           display: -ms-flexbox;
@@ -160,7 +160,7 @@
           margin-right: 50rpx;
           width: 100%;
 }
-.container .body .reply .reply-container .reply-info .reply-info-user-info.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-info .reply-info-user-info.data-v-dfefc526 {
             display: -webkit-box;
             display: -webkit-flex;
             display: -ms-flexbox;
@@ -176,7 +176,7 @@
                     justify-content: space-between;
             font-size: 30rpx;
 }
-.container .body .reply .reply-container .reply-info .reply-info-user-info .reply-info-user-info-fullname.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-info .reply-info-user-info .reply-info-user-info-fullname.data-v-dfefc526 {
               deplay: flex;
               -webkit-box-orient: horizontal;
               -webkit-box-direction: normal;
@@ -184,24 +184,24 @@
                   -ms-flex-direction: row;
                       flex-direction: row;
 }
-.container .body .reply .reply-container .reply-info .reply-info-user-info .reply-info-user-info-fullname .reply-info-user-info-fullname-louzhu.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-info .reply-info-user-info .reply-info-user-info-fullname .reply-info-user-info-fullname-louzhu.data-v-dfefc526 {
                 color: red;
                 border: 0px solid rgba(93, 93, 93, 0.44);
                 font-size: 25rpx;
 }
-.container .body .reply .reply-container .reply-info .reply-info-user-info .reply-info-user-info-loushu.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-info .reply-info-user-info .reply-info-user-info-loushu.data-v-dfefc526 {
               color: gray;
 }
-.container .body .reply .reply-container .reply-info .reply-info-user-info > ._span.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-info .reply-info-user-info > ._span.data-v-dfefc526 {
               /*font-weight: lighter;*/
               /*color: rgb(245, 245, 239);*/
               font-size: 30rpx;
 }
-.container .body .reply .reply-container .reply-imgList.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-imgList.data-v-dfefc526 {
           height: 210rpx;
           width: 210rpx;
 }
-.container .body .reply .reply-container .reply-content.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-content.data-v-dfefc526 {
           width: 100%;
           white-space: pre-line;
           text-align: justify;
@@ -210,7 +210,7 @@
           margin-top: 10rpx;
           font-size: 30rpx;
 }
-.container .body .reply .reply-container .reply-foot.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-foot.data-v-dfefc526 {
           display: -webkit-box;
           display: -webkit-flex;
           display: -ms-flexbox;
@@ -224,27 +224,27 @@
           margin-right: 10rpx;
           margin-top: 10rpx;
 }
-.container .body .reply .reply-container .reply-foot .time.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-foot .time.data-v-dfefc526 {
             color: gray;
             margin-left: 10rpx;
 }
-.container .body .reply .reply-container .reply-foot .action .item.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-foot .action .item.data-v-dfefc526 {
             height: 35rpx;
             width: 35rpx;
             /*margin-left: 50rpx;*/
 }
-.container .body .reply .reply-container .reply-divide.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-divide.data-v-dfefc526 {
           border-bottom: 1px solid #ccc;
           margin-bottom: 10rpx;
           margin-top: 10rpx;
           margin-right: 20rpx;
 }
-.container .body .reply .reply-container .reply-replyList-div.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-replyList-div.data-v-dfefc526 {
           background-color: #f5f5ef;
           font-size: 30rpx;
           padding: 15rpx;
 }
-.container .body .reply .reply-container .reply-replyList-div .reply-replyList .reply-replyList-line.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-replyList-div .reply-replyList .reply-replyList-line.data-v-dfefc526 {
             display: -webkit-box;
             display: -webkit-flex;
             display: -ms-flexbox;
@@ -255,15 +255,15 @@
                 -ms-flex-direction: row;
                     flex-direction: row;
 }
-.container .body .reply .reply-container .reply-replyList-div .reply-replyList .reply-replyList-line .reply-replyList-name.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-replyList-div .reply-replyList .reply-replyList-line .reply-replyList-name.data-v-dfefc526 {
               color: dodgerblue;
 }
-.container .body .reply .reply-container .reply-replyList-div .reply-replyList .reply-replyList-line .reply-info-user-info-fullname-louzhu.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-replyList-div .reply-replyList .reply-replyList-line .reply-info-user-info-fullname-louzhu.data-v-dfefc526 {
               color: red;
               border: 0px solid rgba(93, 93, 93, 0.44);
               font-size: 25rpx;
 }
-.container .body .reply .reply-container .reply-replyList-div .reply-replyList .reply-replyList-line .reply-replyList-content.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-replyList-div .reply-replyList .reply-replyList-line .reply-replyList-content.data-v-dfefc526 {
               width: 100%;
               /*white-space: pre-line;*/
               text-align: justify;
@@ -271,14 +271,14 @@
               font-size: 30rpx;
               /*font-weight: lighter;*/
 }
-.container .body .reply .reply-container .reply-replyList-div .reply-replyList-tips.data-v-4bc4a442 {
+.container .body .reply .reply-container .reply-replyList-div .reply-replyList-tips.data-v-dfefc526 {
             display: -webkit-box;
             display: -webkit-flex;
             display: -ms-flexbox;
             display: flex;
             color: dodgerblue;
 }
-.container .body .reply-buton.data-v-4bc4a442 {
+.container .body .reply-buton.data-v-dfefc526 {
       border-radius: 50%;
       width: 100rpx;
       height: 100rpx;
@@ -291,13 +291,13 @@
       left: 81vw;
       color: white;
 }
-.container .body .up-png.data-v-4bc4a442 {
+.container .body .up-png.data-v-dfefc526 {
       width: 100rpx;
       right: 30rpx;
       bottom: 166rpx;
       position: fixed;
 }
-.controller.data-v-4bc4a442 {
+.controller.data-v-dfefc526 {
   border-top: 1px solid #ccc;
   height: 100rpx;
   position: fixed;
@@ -315,7 +315,7 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-.controller .pagination.data-v-4bc4a442 {
+.controller .pagination.data-v-dfefc526 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -329,17 +329,17 @@
     margin-left: 20rpx;
     /*justify-content: space-around;*/
 }
-.controller .pagination .left-arrow.data-v-4bc4a442 {
+.controller .pagination .left-arrow.data-v-dfefc526 {
       height: 50rpx;
       width: 50rpx;
       margin-right: 20rpx;
 }
-.controller .pagination .right-arrow.data-v-4bc4a442 {
+.controller .pagination .right-arrow.data-v-dfefc526 {
       height: 50rpx;
       width: 50rpx;
       margin-left: 20rpx;
 }
-.controller .actions.data-v-4bc4a442 {
+.controller .actions.data-v-dfefc526 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -352,21 +352,21 @@
     margin-right: 50rpx;
     margin-top: 20rpx;
 }
-.controller .actions .comment.data-v-4bc4a442 {
+.controller .actions .comment.data-v-dfefc526 {
       height: 50rpx;
       width: 50rpx;
       margin-right: 25rpx;
 }
-.controller .actions .praise.data-v-4bc4a442 {
+.controller .actions .praise.data-v-dfefc526 {
       height: 50rpx;
       width: 50rpx;
       margin-right: 20rpx;
 }
-.controller .actions .share.data-v-4bc4a442 {
+.controller .actions .share.data-v-dfefc526 {
       height: 50rpx;
       width: 50rpx;
 }
-.d-back-home.data-v-4bc4a442 {
+.d-back-home.data-v-dfefc526 {
   position: fixed;
   width: 96rpx;
   height: 96rpx;

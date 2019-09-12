@@ -24,19 +24,19 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.container.data-v-85511fd6 {
+.container.data-v-a61ecdae {
   background-color: #f5f5f9;
   width: 100vw;
 }
-.container .notice.data-v-85511fd6 {
+.container .notice.data-v-a61ecdae {
     background-color: white;
     margin-bottom: 20rpx;
     /*padding: 30rpx;*/
 }
-.container .notice .other-notice.data-v-85511fd6 {
+.container .notice .other-notice.data-v-a61ecdae {
       padding: 30rpx;
 }
-.container .notice .other-notice .head.data-v-85511fd6 {
+.container .notice .other-notice .head.data-v-a61ecdae {
         color: black;
         display: -webkit-box;
         display: -webkit-flex;
@@ -48,12 +48,12 @@
             -ms-flex-pack: justify;
                 justify-content: space-between;
 }
-.container .notice .other-notice .head .head-left .head-img.data-v-85511fd6 {
+.container .notice .other-notice .head .head-left .head-img.data-v-a61ecdae {
           border-radius: 45rpx;
           width: 75rpx;
           height: 75rpx;
 }
-.container .notice .other-notice .head .head-left .info.data-v-85511fd6 {
+.container .notice .other-notice .head .head-left .info.data-v-a61ecdae {
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
           -webkit-flex-direction: column;
@@ -65,28 +65,28 @@
           display: flex;
           margin-left: 26rpx;
 }
-.container .notice .other-notice .head .head-left .info .name.data-v-85511fd6 {
+.container .notice .other-notice .head .head-left .info .name.data-v-a61ecdae {
             font-weight: bold;
             font-size: 30rpx;
 }
-.container .notice .other-notice .head .head-left .info .time.data-v-85511fd6 {
+.container .notice .other-notice .head .head-left .info .time.data-v-a61ecdae {
             font-size: 25rpx;
             color: #888;
 }
-.container .notice .other-notice .head .head-right.data-v-85511fd6 {
+.container .notice .other-notice .head .head-right.data-v-a61ecdae {
           font-size: 35rpx;
           color: red;
 }
-.container .notice .other-notice .head .top.data-v-85511fd6 {
+.container .notice .other-notice .head .top.data-v-a61ecdae {
           position: absolute;
           right: 40rpx;
           color: red;
 }
-.container .notice .other-notice .head .top .ellipsis.data-v-85511fd6 {
+.container .notice .other-notice .head .top .ellipsis.data-v-a61ecdae {
             width: 50rpx;
             height: 75rpx;
 }
-.container .notice .other-notice .body.data-v-85511fd6 {
+.container .notice .other-notice .body.data-v-a61ecdae {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -99,16 +99,16 @@
         margin-top: 10rpx;
         font-size: 30rpx;
 }
-.container .notice .other-notice .body .reply-content.data-v-85511fd6 {
+.container .notice .other-notice .body .reply-content.data-v-a61ecdae {
           margin: 10rpx;
 }
-.container .notice .other-notice .body .replied-content.data-v-85511fd6 {
+.container .notice .other-notice .body .replied-content.data-v-a61ecdae {
           padding-left: 10rpx;
           padding-right: 10rpx;
           padding-bottom: 10rpx;
           background-color: #f5f5f9;
 }
-.container .notice .other-notice .body .post.data-v-85511fd6 {
+.container .notice .other-notice .body .post.data-v-a61ecdae {
           background-color: #f5f5f9;
           display: -webkit-box;
           display: -webkit-flex;
@@ -121,11 +121,11 @@
                   flex-direction: row;
           padding: 0rpx 10rpx 10rpx 10rpx;
 }
-.container .notice .other-notice .body .post .post-img.data-v-85511fd6 {
+.container .notice .other-notice .body .post .post-img.data-v-a61ecdae {
             width: 90rpx;
             height: 90rpx;
 }
-.container .notice .other-notice .body .post .post-info.data-v-85511fd6 {
+.container .notice .other-notice .body .post .post-info.data-v-a61ecdae {
             display: -webkit-box;
             display: -webkit-flex;
             display: -ms-flexbox;
@@ -137,13 +137,13 @@
                     flex-direction: column;
             margin-left: 20rpx;
 }
-.container .notice .other-notice .body .post .post-info .post-username.data-v-85511fd6 {
+.container .notice .other-notice .body .post .post-info .post-username.data-v-a61ecdae {
               font-size: 35rpx;
 }
-.container .notice .other-notice .body .post .post-info .post-title.data-v-85511fd6 {
+.container .notice .other-notice .body .post .post-info .post-title.data-v-a61ecdae {
               font-size: 35rpx;
 }
-.selected.data-v-85511fd6 {
+.selected.data-v-a61ecdae {
   color: #41b883;
   border-bottom: 2rpx solid #41b883;
 }

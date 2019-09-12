@@ -2,6 +2,9 @@ import Vue from 'vue'
 import App from './App'
 import Flyio from 'flyio/dist/npm/wx'
 import {
+	tips_msg
+} from '@/const'
+import {
 	api
 } from '@/const'
 

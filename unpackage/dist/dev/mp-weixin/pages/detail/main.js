@@ -85,8 +85,6 @@ var render = function() {
 
   var m5 = __webpack_require__(/*! ../../static/collectioned.png */ 89)
 
-  var m6 = __webpack_require__(/*! ../../static/share.png */ 90)
-
   _vm.$mp.data = Object.assign(
     {},
     {
@@ -96,8 +94,7 @@ var render = function() {
         m2: m2,
         m3: m3,
         m4: m4,
-        m5: m5,
-        m6: m6
+        m5: m5
       }
     }
   )
@@ -236,7 +233,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var _const = __webpack_require__(/*! ../../const */ 10);
 
 
@@ -249,7 +245,7 @@ var _utils = __webpack_require__(/*! ../../utils */ 22);
 
 
 
-var _net = __webpack_require__(/*! ../../utils/net */ 21);function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var login = function login() {return __webpack_require__.e(/*! import() | components/login */ "components/login").then(__webpack_require__.bind(null, /*! ../../components/login */ 103));};var sendReply = function sendReply() {return Promise.all(/*! import() | components/sendReply */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/sendReply")]).then(__webpack_require__.bind(null, /*! ../../components/sendReply */ 117));};var loginTips = function loginTips() {return Promise.all(/*! import() | components/loginTips */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/loginTips")]).then(__webpack_require__.bind(null, /*! ../../components/loginTips */ 131));};
+var _net = __webpack_require__(/*! ../../utils/net */ 21);function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var login = function login() {return __webpack_require__.e(/*! import() | components/login */ "components/login").then(__webpack_require__.bind(null, /*! ../../components/login */ 103));};var sendReply = function sendReply() {return Promise.all(/*! import() | components/sendReply */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/sendReply")]).then(__webpack_require__.bind(null, /*! ../../components/sendReply */ 117));};var loginTips = function loginTips() {return Promise.all(/*! import() | components/loginTips */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/loginTips")]).then(__webpack_require__.bind(null, /*! ../../components/loginTips */ 145));};
 
 
 
@@ -265,13 +261,13 @@ var debounceOnScroll = function debounceOnScroll() {return (0, _utils.debounce)(
     loginTips: loginTips },
 
   onUnload: function onUnload() {
-    this.$http.get("".concat(_const.api), {
+    this.$http({
       act: 'post.updateCursor',
       postId: this.id,
       pageNum: this.pageNum,
       t: this.t,
-      cursor: this.cursor });
-
+      cursor: this.cursor },
+    function () {});
     this.detailData = {};
     this.currentReplies = [];
   },

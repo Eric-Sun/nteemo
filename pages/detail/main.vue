@@ -93,8 +93,7 @@
 				<img class="comment" @click="showReplyModal" src="../../static/comment.png" />
 				<img v-if="detailData.isCollection==0" class="praise" @click="doOrUndoCollect" src="../../static/pre-collection.jpg" />
 				<img v-if="detailData.isCollection==1" class="praise" @click="doOrUndoCollect" src="../../static/collectioned.png" />
-
-				<img class="share" src="../../static/share.png" />
+				<button class="wechat-share" open-type="share" plain="true" />
 			</div>
 		</div>
 	</div>
@@ -130,13 +129,13 @@
 			loginTips
 		},
 		onUnload() {
-			this.$http.get(`${api}`, {
+			this.$http({
 				act: 'post.updateCursor',
 				postId: this.id,
 				pageNum: this.pageNum,
 				t: this.t,
 				cursor: this.cursor
-			})
+			},function(){})
 			this.detailData = {}
 			this.currentReplies = []
 		},
@@ -789,9 +788,14 @@
 				margin-right: 20rpx;
 			}
 
-			.share {
-				height: 50rpx;
-				width: 50rpx;
+			.wechat-share {
+				height: 45rpx;
+				width: 45rpx;
+				margin-right: 10rpx;
+				background-size: 35rpx 35rpx;
+				background-repeat: no-repeat;
+				background-image: url(~@/static/share.png);
+				border: none;
 			}
 
 		}

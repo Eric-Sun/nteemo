@@ -10,6 +10,9 @@
     "pages/member/main",
     "pages/detail/main"
   ],
+  "window": {
+    "titleNView": false
+  },
   "tabBar": {
     "selectedColor": "#41b883",
     "list": [

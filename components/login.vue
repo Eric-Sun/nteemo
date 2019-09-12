@@ -31,7 +31,7 @@
 		},
 		methods: {
 			cancel() {
-				this.$emit("modalClose");
+				this.$emit("cancelModalClose");
 			},
 			bindGetUserInfo(e) {
 				if (e.mp.detail.userInfo) {
@@ -45,18 +45,21 @@
 									var iv = res.iv
 									var encryptedData = res.encryptedData
 									// 下面开始调用注册接口
-									this.$http({
+									that.$http({
 											act: 'user.wechatLogin',
 											code: code,
 											encryptedData: encryptedData,
 											iv: iv
 										},
 										function(res) {
-											uni.setStorageSync('t', response.data.t);
-											uni.setStorageSync('userId', response.data.userId)
+											uni.setStorageSync('t', res.data.t);
+											uni.setStorageSync('userId', res.data.userId)
 											that.$emit("modalClose");
 										}
 									)
+								},
+								fail: function(res){
+									this.$emit("modalClose");
 								}
 							})
 						}

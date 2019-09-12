@@ -24,14 +24,14 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.mask.data-v-61a8cdfc {
+.mask.data-v-486e652d {
   position: fixed;
   background-color: white;
   height: 100vh;
   width: 100vw;
   z-index: 2333;
 }
-.mask .container.data-v-61a8cdfc {
+.mask .container.data-v-486e652d {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -46,21 +46,21 @@
         -ms-flex-align: center;
             align-items: center;
 }
-.mask .container .input.data-v-61a8cdfc {
+.mask .container .input.data-v-486e652d {
       border-bottom: 2rpx solid #888;
       width: 600rpx;
       margin-top: 200rpx;
 }
-.mask .container .button.data-v-61a8cdfc {
+.mask .container .button.data-v-486e652d {
       width: 600rpx;
       margin-top: 150rpx;
 }
-.mask .container .tips.data-v-61a8cdfc {
+.mask .container .tips.data-v-486e652d {
       font-size: 22rpx;
       color: #888;
       margin-top: 10rpx;
 }
-.mask .container .button-group.data-v-61a8cdfc {
+.mask .container .button-group.data-v-486e652d {
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -71,8 +71,8 @@
           -ms-flex-direction: row;
               flex-direction: row;
 }
-.mask .container .button-group .save-btn.data-v-61a8cdfc,
-      .mask .container .button-group .cancel-btn.data-v-61a8cdfc {
+.mask .container .button-group .save-btn.data-v-486e652d,
+      .mask .container .button-group .cancel-btn.data-v-486e652d {
         margin-left: 20rpx;
         line-height: 80rpx;
         text-align: center;
@@ -81,7 +81,7 @@
         -webkit-box-sizing: border-box;
                 box-sizing: border-box;
 }
-.mask .container .save-btn.data-v-61a8cdfc {
+.mask .container .save-btn.data-v-486e652d {
       background-color: red;
       color: white;
 }

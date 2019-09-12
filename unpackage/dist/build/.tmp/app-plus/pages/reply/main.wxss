@@ -24,13 +24,13 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.container.data-v-4a0fcec2 {
+.container.data-v-123678e6 {
   /*height: 100vh;*/
   height: 90vh;
   width: 100vw;
   background-color: #f5f5ef;
 }
-.container .head.data-v-4a0fcec2 {
+.container .head.data-v-123678e6 {
     background-color: white;
     display: -webkit-box;
     display: -webkit-flex;
@@ -39,12 +39,12 @@
     padding-left: 10rpx;
     /*align-items: center;*/
 }
-.container .head .head-img.data-v-4a0fcec2 {
+.container .head .head-img.data-v-123678e6 {
       border-radius: 45rpx;
       width: 75rpx;
       height: 75rpx;
 }
-.container .head .info.data-v-4a0fcec2 {
+.container .head .info.data-v-123678e6 {
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
       -webkit-flex-direction: column;
@@ -56,10 +56,10 @@
       display: flex;
       margin-left: 26rpx;
 }
-.container .head .info .name.data-v-4a0fcec2 {
+.container .head .info .name.data-v-123678e6 {
         font-size: 30rpx;
 }
-.container .head .info .content.data-v-4a0fcec2 {
+.container .head .info .content.data-v-123678e6 {
         white-space: pre-line;
         text-align: justify;
         text-justify: inter-ideograph;
@@ -68,27 +68,27 @@
         width: 590rpx;
         font-size: 30rpx;
 }
-.container .body.data-v-4a0fcec2 {
+.container .body.data-v-123678e6 {
     padding: 15rpx;
     background-color: #f5f5ef;
 }
-.container .body .title.data-v-4a0fcec2 {
+.container .body .title.data-v-123678e6 {
       /*background-color: white;*/
       padding-left: 30rpx;
 }
-.container .body .title .big.data-v-4a0fcec2 {
+.container .body .title .big.data-v-123678e6 {
         font-size: 50rpx;
 }
-.container .body .reply.data-v-4a0fcec2 {
+.container .body .reply.data-v-123678e6 {
       background-color: white;
 }
-.container .body .reply .reply-title.data-v-4a0fcec2 {
+.container .body .reply .reply-title.data-v-123678e6 {
         font-size: 25rpx;
         margin-bottom: 20rpx;
         margin-left: 25rpx;
         font-weight: lighter;
 }
-.container .body .reply .reply-container-with-divide.data-v-4a0fcec2 {
+.container .body .reply .reply-container-with-divide.data-v-123678e6 {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -99,21 +99,21 @@
             -ms-flex-direction: column;
                 flex-direction: column;
 }
-.container .body .reply .reply-container-with-divide .reply-container.data-v-4a0fcec2 {
+.container .body .reply .reply-container-with-divide .reply-container.data-v-123678e6 {
           display: -webkit-box;
           display: -webkit-flex;
           display: -ms-flexbox;
           display: flex;
 }
-.container .body .reply .reply-container-with-divide .reply-container .reply-head.data-v-4a0fcec2 {
+.container .body .reply .reply-container-with-divide .reply-container .reply-head.data-v-123678e6 {
             margin-left: 25rpx;
 }
-.container .body .reply .reply-container-with-divide .reply-container .reply-head .head-img.data-v-4a0fcec2 {
+.container .body .reply .reply-container-with-divide .reply-container .reply-head .head-img.data-v-123678e6 {
               border-radius: 45rpx;
               width: 75rpx;
               height: 75rpx;
 }
-.container .body .reply .reply-container-with-divide .reply-container .reply-info.data-v-4a0fcec2 {
+.container .body .reply .reply-container-with-divide .reply-container .reply-info.data-v-123678e6 {
             display: -webkit-box;
             display: -webkit-flex;
             display: -ms-flexbox;
@@ -128,12 +128,12 @@
             margin-right: 50rpx;
             width: 100%;
 }
-.container .body .reply .reply-container-with-divide .reply-container .reply-info > ._span.data-v-4a0fcec2 {
+.container .body .reply .reply-container-with-divide .reply-container .reply-info > ._span.data-v-123678e6 {
               /*font-weight: lighter;*/
               /*color: gray;*/
               font-size: 30rpx;
 }
-.container .body .reply .reply-container-with-divide .reply-container .reply-info .reply-content.data-v-4a0fcec2 {
+.container .body .reply .reply-container-with-divide .reply-container .reply-info .reply-content.data-v-123678e6 {
               width: 100%;
               /*white-space: pre-line;*/
               text-align: justify;
@@ -141,11 +141,11 @@
               /*font-weight: 200;*/
               font-size: 30rpx;
 }
-.container .body .reply .reply-container-with-divide .reply-container .reply-info .reply-imgList.data-v-4a0fcec2 {
+.container .body .reply .reply-container-with-divide .reply-container .reply-info .reply-imgList.data-v-123678e6 {
               width: 180rpx;
               height: 180rpx;
 }
-.container .body .reply .reply-container-with-divide .reply-container .reply-info .reply-foot.data-v-4a0fcec2 {
+.container .body .reply .reply-container-with-divide .reply-container .reply-info .reply-foot.data-v-123678e6 {
               display: -webkit-box;
               display: -webkit-flex;
               display: -ms-flexbox;
@@ -158,22 +158,22 @@
               font-weight: lighter;
               margin-right: 50rpx;
 }
-.container .body .reply .reply-container-with-divide .reply-container .reply-info .reply-foot .time.data-v-4a0fcec2 {
+.container .body .reply .reply-container-with-divide .reply-container .reply-info .reply-foot .time.data-v-123678e6 {
                 font-size: 25rpx;
                 color: gray;
 }
-.container .body .reply .reply-container-with-divide .reply-container .reply-info .reply-foot .action .item.data-v-4a0fcec2 {
+.container .body .reply .reply-container-with-divide .reply-container .reply-info .reply-foot .action .item.data-v-123678e6 {
                 height: 30rpx;
                 width: 30rpx;
                 /*margin-left: 50rpx;*/
 }
-.container .body .reply .reply-container-with-divide .reply-divide.data-v-4a0fcec2 {
+.container .body .reply .reply-container-with-divide .reply-divide.data-v-123678e6 {
           border-bottom: 1px solid #ccc;
           margin-bottom: 10rpx;
           margin-top: 10rpx;
           margin-right: 20rpx;
 }
-.container .body .reply-buton.data-v-4a0fcec2 {
+.container .body .reply-buton.data-v-123678e6 {
       border-radius: 50%;
       width: 100rpx;
       height: 100rpx;
@@ -186,7 +186,7 @@
       left: 81vw;
       color: white;
 }
-.container .body .up-png.data-v-4a0fcec2 {
+.container .body .up-png.data-v-123678e6 {
       width: 100rpx;
       top: 75vh;
       left: 81vw;

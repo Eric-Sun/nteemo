@@ -2,6 +2,11 @@
 	<div class='header'>
 		<img :src='user&&user.avatarUrl' class='img'>
 		<span class='span'>{{user&&user.nickName}}</span>
+
+
+		<img v-if='user.avatarUrl==undefined' src='https://20190305test.oss-cn-beijing.aliyuncs.com/no_user.jpg' class='img'
+		 @click.stop="login">
+		<span v-if='user.avatarUrl==undefined' class='span' @click.stop="login">未登录</span>
 	</div>
 </template>
 <script>
@@ -18,7 +23,11 @@
 				return passTime(this.user && this.user.createtime).slice(0, -1)
 			}
 		},
-		mounted() {}
+		methods: {
+			login: function() {
+				this.$emit("login")
+			}
+		}
 	}
 </script>
 

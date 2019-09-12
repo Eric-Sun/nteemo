@@ -144,25 +144,32 @@ var _net = __webpack_require__(/*! ../../utils/net */ 21);function _interopRequi
       uni.setStorageSync('fromItem', e.target.dataset.item);
     },
     closeModalEvent: function closeModalEvent() {
-      this.visible = false;
+      this.loginVisible = false;
       this.getData();
     },
-    getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var t;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+    login: function login() {
+      this.loginVisible = true;
+    },
+    getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var t, that;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 t = uni.getStorageSync('t');
+                that = this;
                 this.$http({
                   act: 'user.info',
                   t: t },
                 function (res) {
-                  this.user = res.data;
-                });case 2:case "end":return _context.stop();}}}, _callee, this);}));function getData() {return _getData.apply(this, arguments);}return getData;}() },
+                  that.user = res.data;
+                });case 3:case "end":return _context.stop();}}}, _callee, this);}));function getData() {return _getData.apply(this, arguments);}return getData;}(),
 
+    cancelModalClose: function cancelModalClose() {
+      this.loginVisible = false;
+    } },
 
   onShow: function onShow() {
     var that = this;
     var t = uni.getStorageSync("t");
     (0, _net.checkT)(t,
     function () {
-      that.loginVisible = true;
+      // that.loginVisible = true
     },
     function () {
       that.getData();

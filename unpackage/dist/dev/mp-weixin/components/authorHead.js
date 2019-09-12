@@ -112,20 +112,28 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+
+
 var _index = __webpack_require__(/*! @/utils/index */ 22); //
 //
 //
 //
 //
 //
-var _default = { props: { user: Object },
+//
+//
+//
+//
+//
+var _default = { props: { user: Object }, computed: { formatCreateAt: function formatCreateAt() {return (0, _index.passTime)(this.user && this.user.createtime).slice(0, -1);} },
 
-  computed: {
-    formatCreateAt: function formatCreateAt() {
-      return (0, _index.passTime)(this.user && this.user.createtime).slice(0, -1);
-    } },
-
-  mounted: function mounted() {} };exports.default = _default;
+  methods: {
+    login: function login() {
+      this.$emit("login");
+    } } };exports.default = _default;
 
 /***/ }),
 

@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "首页",
+  "navigationBarBackgroundColor": "#000000",
   "usingComponents": {
     "card": "/components/card",
     "login": "/components/login"
