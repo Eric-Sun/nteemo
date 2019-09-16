@@ -88,13 +88,13 @@
 			}
 		},
 		onShow() {
-			var that = this;
-			var t = uni.getStorageSync("t")
-			checkT(t,
-				function() {
-					that.loginVisible = true
-				},
-				function() {});
+			// var that = this;
+			// var t = uni.getStorageSync("t")
+			// checkT(t,
+			// 	function() {
+			// 		that.loginVisible = true
+			// 	},
+			// 	function() {});
 		},
 
 		methods: {
@@ -104,6 +104,7 @@
 				uni.showLoading({
 					title: '加载中'
 				})
+				var that = this;
 				this.$http({
 					t: t,
 					act: 'reply.detail',
@@ -111,7 +112,7 @@
 					size: 5,
 					pageNum: 0
 				},function(res){
-					this.reply = res.data
+					that.reply = res.data
 					uni.hideLoading()
 				})
 				

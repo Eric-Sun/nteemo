@@ -84,18 +84,25 @@
 		},
 		onShow() {
 			var that = this;
-			var t = uni.getStorageSync("t")
-			checkT(t,
+			this.t = uni.getStorageSync("t");
+			checkT(this.t,
 				function() {
-					that.loginVisible = true
+					uni.showModal({
+						title: "登陆",
+						content: "需要登陆后才可以进行收藏",
+						confirmText: "去登陆",
+						success: function(res) {
+							if (res.confirm) {
+								that.loginVisible = true;
+							} else if (res.cancel) {}
+						}
+					})
 				},
 				function() {
 					that.t = uni.getStorageSync('t')
 					that.getData()
 					that.readAllNotices()
-				}
-			);
-
+				});
 		},
 		methods: {
 			async readAllNotices() {

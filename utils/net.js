@@ -1,18 +1,23 @@
 import Flyio from 'flyio/dist/npm/wx'
-import {api} from '../const'
+import {
+	api
+} from '../const'
 
-export function checkT(t,falseFunction,trueFunction) {
-  new Flyio().get(`${api}`,
-    {
-      act: 'user.checkToken',
-      t: t
-    }).then(function (res) {
-    if (res.data.result == 1) {
-      falseFunction();
-    } else {
-      trueFunction();
-    }
-  });
+export function checkT(t, falseFunction, trueFunction) {
+	if (t == 0) {
+		falseFunction();
+	} else {
+		new Flyio().get(`${api}`, {
+			act: 'user.checkToken',
+			t: t
+		}).then(function(res) {
+			if (res.data.result == 1) {
+				falseFunction();
+			} else {
+				trueFunction();
+			}
+		});
+	}
 }
 
 /**
@@ -21,7 +26,7 @@ export function checkT(t,falseFunction,trueFunction) {
  * @param falseFunction
  * @param trueFunction
  */
-export function handleResponse(res,falseFunction,trueFunction){
+export function handleResponse(res, falseFunction, trueFunction) {
 
 
 }

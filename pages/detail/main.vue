@@ -2,7 +2,7 @@
 	<div class='container'>
 		<img v-if="isShare==1" @click.stop='backHome' class='d-back-home' src='http://cdn.xcx.pemarket.com.cn/icon-Return%20to%20the%20home%20page.png'>
 		<loginTips></loginTips>
-		<login :visible='loginVisible' v-on:modalClose='closeModalEvent'></login>
+		<login :visible='loginVisible' v-on:modalClose='closeModalEvent' v-on:cancelModalClose='cancelModalClose'></login>
 		<sendReply v-if='sendVisible' @close-modal='closeModal' @reply-success='replySuccess' :content='content' :postId='id'
 		 :replyId='replyId' :isPostUserId='isPostUserId' :postAnonymous='postAnonymous' :replyUserName='replyUserName'></sendReply>
 		<div>
@@ -202,6 +202,9 @@
 				this.getPostData()
 				this.getReplyData(-1)
 			},
+			cancelModalClose(){
+				this.loginVisible = false
+			},
 			// 点击右箭头，往前进一个页面
 			goPage() {
 				if (this.pageNum == this.culculatePageNum) {
@@ -214,67 +217,82 @@
 			},
 			doOrUndoCollect() {
 				var that = this;
-				if (this.detailData.isCollection == 1) {
-					this.$http({
-						act: "collection.post.delete",
-						t: this.t,
-						postId: this.id
-					}, function(res) {
-						if (res.data.code == 30003) {
-							uni.showToast({
-								title: '已经取消收藏了',
-								icon: 'none',
-								duration: 2000
-							})
-						} else {
-							if (res.data.code != null) {
+				if (uni.getStorageSync("t") != 0) {
+					var that = this;
+					if (this.detailData.isCollection == 1) {
+						this.$http({
+							act: "collection.post.delete",
+							t: this.t,
+							postId: this.id
+						}, function(res) {
+							if (res.data.code == 30003) {
 								uni.showToast({
-									title: '服务正在失去联系，请稍后',
+									title: '已经取消收藏了',
 									icon: 'none',
 									duration: 2000
 								})
 							} else {
+								if (res.data.code != null) {
+									uni.showToast({
+										title: '服务正在失去联系，请稍后',
+										icon: 'none',
+										duration: 2000
+									})
+								} else {
+									uni.showToast({
+										title: '取消收藏成功',
+										icon: 'none',
+										duration: 2000
+									})
+									that.detailData.isCollection = 0;
+								}
+							}
+						}, function(res) {}, [30002, 30003]);
+
+					} else {
+						this.$http({
+							act: "collection.post.add",
+							t: this.t,
+							postId: this.id
+						}, function(res) {
+							if (res.data.code == 30002) {
 								uni.showToast({
-									title: '取消收藏成功',
+									title: '已经收藏了',
 									icon: 'none',
 									duration: 2000
 								})
-								that.detailData.isCollection = 0;
+							} else {
+								if (res.data.code != null) {
+									uni.showToast({
+										title: '服务正在失去联系，请稍后',
+										icon: 'none',
+										duration: 2000
+									})
+								} else {
+									uni.showToast({
+										title: '收藏成功',
+										icon: 'none',
+										duration: 2000
+									})
+									that.detailData.isCollection = 1;
+								}
 							}
-						}
-					},function(res){},[30002,30003]);
+						}, function(res) {}, [30002, 30003])
 
+					}
 				} else {
-					this.$http({
-						act: "collection.post.add",
-						t: this.t,
-						postId: this.id
-					}, function(res) {
-						if (res.data.code == 30002) {
-							uni.showToast({
-								title: '已经收藏了',
-								icon: 'none',
-								duration: 2000
-							})
-						} else {
-							if (res.data.code != null) {
-								uni.showToast({
-									title: '服务正在失去联系，请稍后',
-									icon: 'none',
-									duration: 2000
-								})
-							} else {
-								uni.showToast({
-									title: '收藏成功',
-									icon: 'none',
-									duration: 2000
-								})
-								that.detailData.isCollection = 1;
-							}
+					uni.showModal({
+						title: "登陆",
+						content: "需要登陆后才可以进行收藏",
+						confirmText: "去登陆",
+						success: function(res) {
+							if (res.confirm) {
+								that.loginVisible = true;
+							} else if (res.cancel) {}
 						}
-					},function(res){},[30002,30003])
-
+					})
 				}
+
 
 
 			},
@@ -796,7 +814,7 @@
 			.wechat-share {
 				height: 60rpx;
 				width: 60rpx;
-				margin-top:10rpx;
+				margin-top: 10rpx;
 				margin-right: 10rpx;
 				background-size: 35rpx 35rpx;
 				background-repeat: no-repeat;
