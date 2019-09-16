@@ -129,15 +129,19 @@
 			loginTips
 		},
 		onUnload() {
-			this.$http({
-				act: 'post.updateCursor',
-				postId: this.id,
-				pageNum: this.pageNum,
-				t: this.t,
-				cursor: this.cursor
-			},function(){})
+			const t = uni.getStorageSync("t");
+			if (t != 0) {
+				this.$http({
+					act: 'post.updateCursor',
+					postId: this.id,
+					pageNum: this.pageNum,
+					t: this.t,
+					cursor: this.cursor
+				}, function() {})
+			}
 			this.detailData = {}
 			this.currentReplies = []
+
 		},
 		mounted() {
 			var that = this;
@@ -209,6 +213,7 @@
 				this.getReplyData(this.pageNum);
 			},
 			doOrUndoCollect() {
+				var that = this;
 				if (this.detailData.isCollection == 1) {
 					this.$http({
 						act: "collection.post.delete",
@@ -234,10 +239,10 @@
 									icon: 'none',
 									duration: 2000
 								})
-								this.detailData.isCollection = 0;
+								that.detailData.isCollection = 0;
 							}
 						}
-					})
+					},function(res){},[30002,30003]);
 
 				} else {
 					this.$http({
@@ -264,10 +269,10 @@
 									icon: 'none',
 									duration: 2000
 								})
-								this.detailData.isCollection = 1;
+								that.detailData.isCollection = 1;
 							}
 						}
-					})
+					},function(res){},[30002,30003])
 
 				}
 
@@ -789,8 +794,9 @@
 			}
 
 			.wechat-share {
-				height: 45rpx;
-				width: 45rpx;
+				height: 60rpx;
+				width: 60rpx;
+				margin-top:10rpx;
 				margin-right: 10rpx;
 				background-size: 35rpx 35rpx;
 				background-repeat: no-repeat;

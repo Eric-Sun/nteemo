@@ -8,7 +8,7 @@ import {
 	api
 } from '@/const'
 
-Vue.prototype.$http = function(data, successFunction, failFunction) {
+Vue.prototype.$http = function(data, successFunction, failFunction, excludeErrorCode) {
 	uni.request({
 		url: api,
 		data: data,
@@ -16,11 +16,16 @@ Vue.prototype.$http = function(data, successFunction, failFunction) {
 			if (res.data.code == null) {
 				successFunction(res);
 			} else {
-				uni.showToast({
-					title: tips_msg.server_error + "code=(" + res.data.code + ")",
-					icon: 'none',
-					duration: 2000
-				})
+				if (excludeErrorCode != undefined &&  excludeErrorCode.indexOf(res.data.code)>=0) {
+					console.log(excludeErrorCode)
+					successFunction(res);
+				} else {
+					uni.showToast({
+						title: tips_msg.server_error + "code=(" + res.data.code + ")",
+						icon: 'none',
+						duration: 2000
+					})
+				}
 			}
 		},
 		fail: function(res) {
