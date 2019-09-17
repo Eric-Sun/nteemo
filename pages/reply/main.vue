@@ -9,7 +9,10 @@
 					<img v-if="postAnonymous==0" class='head-img' :src='reply.userAvatarUrl' @click.stop='goAuthorPage'>
 					<img v-if="postAnonymous==1" class='head-img' :src='reply.userAvatarUrl'>
 					<div class='info'>
-						<div class="name">{{reply.userName}}</div>
+						<div class="name_group">
+							<div class="name">{{reply.userName}}</div>
+							<span v-if="postUserId==reply.userId" class="info-louzhu">楼主</span>
+						</div>
 						<div class='content'>
 							{{reply.content}}
 						</div>
@@ -26,7 +29,10 @@
 									<img v-if="postAnonymous==1" class='head-img' :src='item.userAvatarUrl' />
 								</div>
 								<div class="reply-info">
-									<span>{{item.userName}}</span>
+									<div class="reply-info-user-group">
+										<span class="reply-info-user-group-username">{{item.userName}}</span>
+										<span v-if="postUserId==item.userId" class="reply-info-user-group-louzhu">楼主</span>
+									</div>
 									<div class='reply-content'>
 										{{item.lastReplyId!=reply.replyId?
                     '回复@'+item.lastReplyUserName+':'+item.content:item.content}}
@@ -111,11 +117,11 @@
 					replyId: this.currentReplyId,
 					size: 5,
 					pageNum: 0
-				},function(res){
+				}, function(res) {
 					that.reply = res.data
 					uni.hideLoading()
 				})
-				
+
 
 			},
 
@@ -170,8 +176,6 @@
 			this.postId = this.$root.$mp.query.postId
 			this.postAnonymous = this.$root.$mp.query.anonymous
 			this.postUserId = this.$root.$mp.query.postUserId
-			console.log("postUserId=" + this.postUserId)
-			console.log("postAnonymous=" + this.postAnonymous)
 		},
 		data() {
 			return {
@@ -214,9 +218,22 @@
 				display: flex;
 				margin-left: 26rpx;
 
-				.name {
-					font-size: $userName-font-size;
+				.name_group {
+					display: flex;
+					flex-direction: row;
+
+					.name {
+						font-size: $userName-font-size;
+					}
+
+					.info-louzhu {
+						margin-left: 5rpx;
+						color: red;
+						border: 0px solid rgba(93, 93, 93, 0.44);
+						font-size: $userName-font-size;
+					}
 				}
+
 
 				.content {
 					white-space: pre-line;
@@ -227,6 +244,7 @@
 					width: 590rpx;
 					font-size: $content-font-size;
 				}
+
 			}
 
 		}
@@ -280,6 +298,19 @@
 							margin-right: 50rpx;
 							width: 100%;
 
+							.reply-info-user-group {
+									display:flex;
+									flex-direction:row;
+								.reply-info-user-group-username{
+								}
+								
+								.reply-info-user-group-louzhu{
+									margin-left: 5rpx;
+									color: red;
+									border: 0px solid rgba(93, 93, 93, 0.44);
+									font-size: $userName-font-size;
+								}
+							}
 
 							&>span {
 								/*font-weight: lighter;*/
