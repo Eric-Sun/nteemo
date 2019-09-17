@@ -199,6 +199,7 @@
 		/*height: 100vh;*/
 		height: 90vh;
 		width: 100vw;
+		margin-top:20rpx;
 		background-color: rgb(245, 245, 239);
 
 		.head {

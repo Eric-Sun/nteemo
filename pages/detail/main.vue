@@ -504,6 +504,7 @@
 
 <style lang='scss' scoped>
 	.container {
+		margin-top:10rpx;
 		height: 100vh;
 
 		.head {
