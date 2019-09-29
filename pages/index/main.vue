@@ -78,9 +78,11 @@
 					function() {
 						wx.setStorageSync("t", 0);
 						that.t = 0;
+						console.log("t is expired")
 					},
 					function() {
 						that.t = wx.getStorageSync("t")
+						console.log("t is ok")
 					}
 				);
 				this.getData(0)

@@ -1,8 +1,8 @@
 <template>
 	<div class='container'>
 		<login :visible='loginVisible' v-on:modalClose='closeModalEvent'></login>
-
-		<div>
+		<div v-if="noticeList.length==0" class="no-data">无数据</div>
+		<div v-if="noticeList.length>0">
 			<div class='notice' v-for='item in formatNoticeList' :key='item.id' :data-id='item.id'>
 				<div v-if="item.type!=2" class="other-notice">
 					<div class='head'>
@@ -109,7 +109,7 @@
 				this.$http({
 					t: this.t,
 					act: 'notice.readAll'
-				},function(res){
+				}, function(res) {
 					uni.removeTabBarBadge({
 						index: 2
 					})
@@ -138,7 +138,7 @@
 					t: this.t,
 					pageNum: 0,
 					size: 10
-				},function(res){
+				}, function(res) {
 					that.noticeList = res.data.list
 				})
 			}
@@ -150,6 +150,16 @@
 	.container {
 		background-color: rgb(245, 245, 249);
 		width: 100vw;
+
+		.no-data {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 35rpx;
+			padding-top: 400rpx;
+			padding-bottom: 650rpx;
+			color:#C0C0C0
+		}
 
 		.notice {
 			background-color: white;

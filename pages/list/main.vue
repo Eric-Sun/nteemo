@@ -47,9 +47,11 @@
       var t = uni.getStorageSync("t")
       checkT(t,
         function () {
+			console.log("t is ok")
           that.loginVisible = true
         },
         function () {
+			console.log("t is expired;")
         }
       );
     },

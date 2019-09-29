@@ -54,7 +54,13 @@
 										function(res) {
 											uni.setStorageSync('t', res.data.t);
 											uni.setStorageSync('userId', res.data.userId)
-											that.$emit("modalClose");
+											uni.showToast({
+												title:"登录成功",
+												duration:1000,
+												complete:function(){
+													that.$emit("modalClose");
+												}
+											})
 										}
 									)
 								},

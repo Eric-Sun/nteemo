@@ -6,14 +6,14 @@
 			<input class='input' type="text" placeholder="最少10个字" v-model="title">
 		</div>
 		<picker class='picker' @change="bindPickerChange($event)" :value="type.index" :range="type.pickerData">
-			<span>类型:</span><span style='margin-left:200rpx;'>{{type.pickerData[type.index]}}</span>
+			<span>类型:</span><span style='margin-left:200rpx;'>故事贴</span>
 		</picker>
 		<!--    <picker class='picker' @change="bindPickerChange1($event)" :value="anon.index" :range="anon.pickerData">-->
 		<!--      <span>匿名:</span><span style='margin-left:200rpx;'>{{anon.pickerData[anon.index]}}</span>-->
 		<!--    </picker>-->
 
 		<textarea v-show="tab==='markdown'" class='textarea' v-model="content"></textarea>
-		<div class="help-block">上传图片(建议图片格式为：JPEG/BMP/PNG/GIF，大小不超过5M，最多可上传9张)</div>
+		<!-- <div class="help-block">上传图片(建议图片格式为：JPEG/BMP/PNG/GIF，大小不超过5M，最多可上传9张)</div>
 		<lu class="upload-imgs">
 			<li v-if="imgList.length>=9 ? false : true">
 				<input type="file" class="upload" @click="uploadImg()" ref="inputer" />
@@ -25,7 +25,7 @@
 				<p class="img"><img :src="img.url"><a class="close" @click="delImg(index)">x</a>
 				</p>
 			</li>
-		</lu>
+		</lu> -->
 		<button @click.stop="handle">发帖</button>
 	</div>
 </template>
@@ -54,7 +54,7 @@
 		data() {
 			return {
 				type: {
-					pickerData: ['故事贴', '一日一记'],
+					pickerData: ['故事贴'],
 					index: 1
 				},
 				anon: {
@@ -175,10 +175,10 @@
 					title: this.title,
 					content: this.content,
 					imgList: JSON.stringify(imgIdList),
-					type: this.type.index,
+					type: 0,
 					anonymous: this.anon.index
 				}, function(res) {
-					if (!response.data.code) {
+					if (!res.data.code) {
 						uni.showToast({
 							title: '发帖成功',
 							icon: 'none',
@@ -189,14 +189,14 @@
 						uni.switchTab({
 							url: `../index/main`
 						})
-					} else if (response.data.code == 6) {
+					} else if (res.data.code == 6) {
 						uni.showToast({
 							title: '您发的标题或内容违规，请修改后重发',
 							icon: 'none',
 							duration: 2000
 						})
 					}
-				})
+				},function(){},[6]);
 			}
 		},
 		onShow() {
@@ -206,7 +206,7 @@
 				function() {
 					uni.showModal({
 						title: "登陆",
-						content: "需要登陆后才可以进行收藏",
+						content: "需要登陆后才可以进行发布",
 						confirmText: "去登陆",
 						success: function(res) {
 							if (res.confirm) {

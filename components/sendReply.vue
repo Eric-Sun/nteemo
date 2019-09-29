@@ -164,7 +164,7 @@
 								duration: 2000
 							})
 						}
-					}
+					},function(){},[6]
 				)
 				this.imgList = []
 			},

@@ -202,7 +202,7 @@
 				this.getPostData()
 				this.getReplyData(-1)
 			},
-			cancelModalClose(){
+			cancelModalClose() {
 				this.loginVisible = false
 			},
 			// 点击右箭头，往前进一个页面
@@ -378,9 +378,10 @@
 					that.pageNum = res.data.cursorInfo.pageNum;
 					if (that.pageNum != 0)
 						that.includePostContent = 0;
-					if (pageNum == -1)
+					if (pageNum == -1) {
 						that.cursorTmp = res.data.cursorInfo.cursor;
-					else {
+						console.log(res.data.cursorInfo.cursor);
+					} else {
 						that.cursor = 0;
 					}
 					uni.hideLoading();
@@ -504,7 +505,7 @@
 
 <style lang='scss' scoped>
 	.container {
-		margin-top:10rpx;
+		margin-top: 10rpx;
 		height: 100vh;
 
 		.head {
