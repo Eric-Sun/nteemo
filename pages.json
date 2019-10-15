@@ -1,10 +1,10 @@
 {
 	"pages": [{
-			"path": "pages/index/main",
-			"style": {
-				"navigationBarTitleText": "首页",
-				"navigationBarBackgroundColor": "#000000"
-			}
+			"path": "pages/index/main"
+			// "style": {
+			// 	"navigationBarTitleText": "首页",
+			// 	"navigationBarBackgroundColor": "#fffff"
+			// }
 		},
 		{
 			"path": "pages/publish/main",
@@ -65,13 +65,11 @@
 		// "pages/member/main"
 
 	],
-	"window": {
+	"globalStyle": {
 		"backgroundTextStyle": "light",
 		"navigationBarBackgroundColor": "#fff",
-		"navigationBarTitleText": "WeChat",
-		"navigationBarTextStyle": "black"
-	},
-	"globalStyle": {
+		"navigationBarTitleText": "首页",
+		"navigationBarTextStyle": "black",
 		"app-plus":{
 			"titleNView":false
 		}

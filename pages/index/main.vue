@@ -62,7 +62,7 @@
 		onShareAppMessage: function() {
 			return {
 				title: '豆子社区', //分享内容
-				path: '/pages/index/index' //分享地址
+				path: '/pages/index/main' //分享地址
 				// imageUrl: '/images/img_share.png',//分享图片
 			}
 		},
