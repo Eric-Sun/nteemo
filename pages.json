@@ -31,6 +31,12 @@
 			}
 		},
 		{
+			"path": "pages/me/modify",
+			"style": {
+				"navigationBarTitleText": "修改信息"
+			}
+		},
+		{
 			"path": "pages/reply/main",
 			"style": {
 				"navigationBarTitleText": "回复"

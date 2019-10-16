@@ -1,6 +1,7 @@
 <template>
 	<div class='header'>
 		<img :src='user&&user.avatarUrl' class='img'>
+		<button @click="toModifyPage">编辑资料</button>
 		<span class='span'>{{user&&user.nickName}}</span>
 
 
@@ -26,6 +27,9 @@
 		methods: {
 			login: function() {
 				this.$emit("login")
+			},
+			toModifyPage:function(){
+				this.$emit("toModifyPage")
 			}
 		}
 	}
