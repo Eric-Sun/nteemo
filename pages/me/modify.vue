@@ -1,8 +1,7 @@
 <template>
 	<div class="container">
 		<div>
-			<img :src='user.avatarUrl' class='img'>
-			<input type="file" class="upload" @click="uploadImg()" ref="inputer"  value="点我上传"/>
+			<img :src='user.avatarUrl' class='img' @click="uploadImg()" ref="inputer">
 		</div>
 		<div>
 			<input v-model='user.nickName'>
@@ -48,11 +47,22 @@
 				let t = uni.getStorageSync("t")
 				this.$http({
 					act: 'user.modifyNameAndAvatar',
-					newName:this.user.nickName,
-					newImgId:this.user.avatarImgId,
+					newName: this.user.nickName,
+					newImgId: this.user.avatarImgId,
 					t: t
 				}, function(res) {
-					console.log("ok")
+					uni.showToast({
+						title: '修改成功',
+						icon: 'none',
+						duration: 2000,
+						success: function() {
+							
+						}
+					})
+					uni.switchTab({
+						url: `/pages/me/main`
+					})
+
 				})
 			},
 			async uploadImg() {
@@ -83,7 +93,7 @@
 								"act": "img.upload",
 								"type": 0 //0为用户上传avatar
 							},
-							
+
 							success: function(res) {
 								let data1 = JSON.parse(res.data);
 								that.user.avatarUrl = data1.url;
@@ -101,5 +111,33 @@
 </script>
 
 <style lang='scss' scoped>
-	.container {}
+	.container {
+		height: 100vh;
+		background-color: rgb(245, 245, 249);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		color: $color;
+		font-size: 30rpx;
+		background-color: white;
+
+		.img {
+			width: 200rpx;
+			height: 200rpx;
+			border-radius: 50%;
+			margin-top: 30rpx;
+		}
+
+		.upload {
+			opacity: 0;
+			filter: alpha(opacity=0);
+			height: 95px;
+			width: 100px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 9;
+		}
+
+	}
 </style>
