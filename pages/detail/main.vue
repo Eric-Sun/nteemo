@@ -91,8 +91,8 @@
 			</div>
 			<div class="actions">
 				<img class="comment" @click="showReplyModal" src="../../static/comment.png" />
-				<img v-if="detailData.isCollection==0" class="praise" @click="doOrUndoCollect" src="../../static/pre-collection.jpg" />
-				<img v-if="detailData.isCollection==1" class="praise" @click="doOrUndoCollect" src="../../static/collectioned.png" />
+				<img v-if="detailData.isCollection==0" class="praise" @click="doOrUndoCollect" src="../../static/collect.png" />
+				<img v-if="detailData.isCollection==1" class="praise" @click="doOrUndoCollect" src="../../static/collected.png" />
 				<button class="wechat-share" open-type="share" plain="true" />
 			</div>
 		</div>

@@ -163,8 +163,7 @@
 <style lang='scss' scoped>
 	.container {
 		/*height: 330rpx;*/
-		padding: 30rpx;
-		margin-bottom: 20rpx;
+		padding: 20rpx;
 		background-color: white;
 		display: flex;
 		flex-direction: column;
@@ -177,18 +176,19 @@
 
 			.head-img {
 				border-radius: 45rpx;
-				width: 75rpx;
-				height: 75rpx;
+				width: 60rpx;
+				height: 60rpx;
 			}
 
 			.info {
 				flex-direction: column;
 				display: flex;
-				margin-left: 26rpx;
+				margin-left: 20rpx;
 
 				.name {
 					font-weight: bold;
 					font-size: $userName-font-size;
+					font-color:$userName-font-color;
 				}
 
 				.time {
