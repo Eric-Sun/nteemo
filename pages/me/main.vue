@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<login :visible='loginVisible' v-on:modalClose='closeModalEvent' v-on:cancelModalClose='cancelModalClose'></login>
-		<authorHead :user='user' v-on:login='login' v-on:toModifyPage="toModifyPage"></authorHead>
+		<!-- <authorHead :user='user' v-on:login='login' v-on:toModifyPage="toModifyPage"></authorHead> -->
 		<div class='list'>
 			<!--<navigator class='list-item' @click.stop='setListFrom' url='/pages/list/main?type=collect' data-item='collect'>我的收藏</navigator>-->
 			<navigator class='list-item' @click.stop='setListFrom' url='/pages/list/main?type=topic' data-item='topic'>最近话题</navigator>

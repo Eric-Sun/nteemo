@@ -814,11 +814,11 @@
 			}
 
 			.wechat-share {
-				height: 60rpx;
-				width: 60rpx;
-				margin-top: 10rpx;
+				height: 50rpx;
+				width: 50rpx;
+				/* margin-top: 10rpx; */
 				margin-right: 10rpx;
-				background-size: 35rpx 35rpx;
+				background-size: 50rpx 50rpx;
 				background-repeat: no-repeat;
 				background-image: url(~@/static/share.png);
 				border: none;
