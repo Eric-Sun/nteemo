@@ -8,6 +8,7 @@
 
 				<!--        <span class='time'>{{formatCreateAt}}</span>-->
 			</div>
+			<div v-if="item.star==1" class="title-star">【精华帖子】</div>
 			<span v-if="!hidden" class="top">
 				<img class="ellipsis" src="@/static/ellipsis.png" :data-postid="item.postId" @click.stop="loadActions($event)" />
 			</span>
@@ -188,7 +189,7 @@
 				.name {
 					font-weight: bold;
 					font-size: $userName-font-size;
-					font-color:$userName-font-color;
+					font-color: $userName-font-color;
 				}
 
 				.time {
@@ -206,6 +207,11 @@
 					width: 50rpx;
 					height: 75rpx;
 				}
+			}
+
+			.title-star {
+
+				color: red;
 			}
 
 			.top-xin {
@@ -252,6 +258,7 @@
 				font-size: 40rpx;
 				font-weight: 900;
 				margin-bottom: 10rpx;
+
 			}
 		}
 
