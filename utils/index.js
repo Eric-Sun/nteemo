@@ -59,3 +59,27 @@ export function debounce (fn, interval = 300) {
     }, interval)
   }
 }
+
+/**
+ * 获取用户的token,在未登录情况下用作唯一用户标示
+ */
+export function getUserToken(context){
+	let userToken = uni.getStorageSync("userToken")
+	if(userToken==''){
+		// 尝试通过服务端获取,然后插入到storage中
+		// 如果没有的话会帮你创建一个新的,如果有的话会直接把跟userId对应过的返回给客户端
+		context.$http({
+			act: 'user.getUserToken'
+		}, function(res) {
+			console.log(res)
+			uni.setStorageSync('userToken',res.data.userToken)
+			console.log("getUserToken from server. userToken="+res.data.userToken)
+			return res.userToken;
+		})
+	}else{
+		console.log("getUserToken from cache. userToken="+userToken)
+		return userToken;
+	}
+	
+	
+}

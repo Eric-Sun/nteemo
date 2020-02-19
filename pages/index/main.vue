@@ -31,7 +31,8 @@
 		checkT
 	} from '@/utils/net'
 	import {
-		debounce
+		debounce,
+		getUserToken
 	} from '@/utils'
 
 
@@ -49,6 +50,7 @@
 				animation: {},
 				visible: false,
 				cursor: 0,
+				userToken:''
 			}
 		},
 
@@ -72,16 +74,17 @@
 				this.init();
 			},
 			init() {
+				this.userToken = getUserToken(this);
 				var that = this;
-				this.t = wx.getStorageSync("t");
+				this.t = uni.getStorageSync("t");
 				checkT(this.t,
 					function() {
-						wx.setStorageSync("t", 0);
+						uni.setStorageSync("t", 0);
 						that.t = 0;
 						console.log("t is expired")
 					},
 					function() {
-						that.t = wx.getStorageSync("t")
+						that.t = uni.getStorageSync("t")
 						console.log("t is ok")
 					}
 				);
@@ -91,7 +94,7 @@
 			},
 			closeModalEvent() {
 				this.visible = false
-				this.t = wx.getStorageSync('t')
+				this.t = uni.getStorageSync('t')
 				this.getData(0)
 			},
 
@@ -108,6 +111,7 @@
 						pageNum: this.page,
 						size: 5,
 						t: this.t,
+						userToken:this.userToken
 					},
 					function(res) {
 						if (res.data.list.length != 0) {

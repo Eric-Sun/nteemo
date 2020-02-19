@@ -108,7 +108,8 @@
 	} from '../../const'
 	import {
 		passTime,
-		debounce
+		debounce,
+		getUserToken
 	} from '../../utils'
 	import sendReply from '../../components/sendReply'
 	import loginTips from '../../components/loginTips'
@@ -129,16 +130,16 @@
 			loginTips
 		},
 		onUnload() {
-			const t = uni.getStorageSync("t");
-			if (t != 0) {
+			// const t = uni.getStorageSync("t");
+			// if (t != 0) {
 				this.$http({
 					act: 'post.updateCursor',
 					postId: this.id,
 					pageNum: this.pageNum,
-					t: this.t,
-					cursor: this.cursor
+					cursor: this.cursor,
+					userToken: this.userToken
 				}, function() {})
-			}
+			// }
 			this.detailData = {}
 			this.currentReplies = []
 
@@ -347,7 +348,8 @@
 				this.$http({
 					act: 'post.detail',
 					postId: this.id,
-					t: this.t
+					t: this.t,
+					userToken: this.userToken
 				}, function(res) {
 					that.detailData = res.data
 					that.level1ReplySize = res.data.level1ReplySize
@@ -371,7 +373,8 @@
 					act: this.requestAction,
 					pageNum: pageNum, //当等于-1的是从cursor位置读取相关的pageNum，当不等于-1的时候则强行获取该pageNum的数据
 					postId: this.id,
-					t: this.t
+					t: this.t,
+					userToken: this.userToken
 				}, function(res) {
 					that.pageNum = pageNum;
 					that.currentReplies = res.data.data
@@ -449,7 +452,7 @@
 		onShow() {
 			this.reply_size_per_page = reply_size_per_page;
 			this.includePostContent = 1;
-
+			this.userToken = getUserToken(this)
 			var that = this;
 			this.t = uni.getStorageSync("t")
 			checkT(this.t,
@@ -497,7 +500,8 @@
 				includePostContent: 1, // 是否包含post信息，如果不包含说明是大于1的评论页面，包含为1，不包含为0
 				cursor: -1,
 				reply_size_per_page: 0,
-				cursorTmp: 0
+				cursorTmp: 0,
+				userToken: ''
 			}
 		}
 	}
