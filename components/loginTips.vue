@@ -54,14 +54,14 @@
     methods: {
       async uploadImg() {
         var that = this;
-        wx.chooseImage({
+        uni.chooseImage({
           count: 1, //最多可以选择的图片总数
           sizeType: ['original'], // 只能是原图
           sourceType: ['album'], // 只能是相册
           success: function (res) {
             // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
             var tempFilePaths = res.tempFilePaths;
-            wx.showToast({
+            uni.showToast({
               title: '正在上传...',
               icon: 'loading',
               mask: true,
@@ -69,7 +69,7 @@
             })
 
 
-            wx.uploadFile({
+            uni.uploadFile({
               url: `${api}`,
               filePath: tempFilePaths[0],
               name: "file",
@@ -87,7 +87,7 @@
                 file.url = data.url;
                 file.imgId = data.imgId;
                 that.imgList.push(file);
-                wx.hideToast();
+                uni.hideToast();
               }
             });
 
@@ -106,7 +106,7 @@
       ,
       async send() {
         var that = this
-        const t = wx.getStorageSync('t')
+        const t = uni.getStorageSync('t')
         var pureContent = ''
         if (this.replyId != 0) {
           var count = `@${this.replyUserName}:`.length
@@ -136,7 +136,7 @@
               that.content = ''
               that.$emit('reply-success')
             } else if (res.data.code == 6) {
-              wx.showToast({
+              uni.showToast({
                 title: '您发的标题或内容违规，请修改后重发',
                 icon: 'none',
                 duration: 2000

@@ -133,7 +133,7 @@
 				// if (this.remainReplies.length > 0) {
 				//   this.currentReplies.concat(this.remainReplies.splice(0, 10))
 				// } else {
-				//   wx.showToast({
+				//   uni.showToast({
 				//     title: '无更多数据',
 				//     icon: 'none',
 				//     duration: 2000

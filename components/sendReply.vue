@@ -113,7 +113,7 @@
 								file.url = data.url;
 								file.imgId = data.imgId;
 								that.imgList.push(file);
-								wx.hideToast();
+								uni.hideToast();
 							}
 						});
 

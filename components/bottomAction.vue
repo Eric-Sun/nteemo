@@ -24,7 +24,7 @@
     },
     name: 'bottomAction.vue',
     onShow: function () {
-      this.t = wx.getStorageSync('t')
+      this.t = uni.getStorageSync('t')
     },
     methods: {
       closeModal() {
@@ -32,7 +32,7 @@
       },
       async deletePost() {
         var that = this;
-        wx.showModal({
+        uni.showModal({
           title: '删除',
           content: '请确认此贴是否删除',
           success(res) {
@@ -44,7 +44,7 @@
               }).then(function (res) {
                 if (res.data.code != null) {
                 }
-                wx.showToast({
+                uni.showToast({
                   title: '成功',
                   icon: 'success',
                   duration: 2000,

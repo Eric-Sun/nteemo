@@ -26,7 +26,7 @@
       purchase: function () {
         // 获取到需要支付的价钱
         var price = 1000;
-        var t = wx.getStorageSync("t")
+        var t = uni.getStorageSync("t")
         //后台订单生成
         // const res = await
         // this.$http.get(`${api}`,
@@ -35,11 +35,11 @@
         //     t: t,
         //     price:price
         //   })
-        // wx.hideLoading()
+        // uni.hideLoading()
         // if (res.data.list.length != 0) {
         //   var data = JSON.parse(data);
         //   console.log(data)
-        //   wx.requestPayment({
+        //   uni.requestPayment({
         //     'timeStamp': data.timeStamp,
         //     'nonceStr': data.nonceStr,
         //     'package': data.package,
@@ -49,7 +49,7 @@
         //       wxb.Post('/api/cards.member/confirm_integral', {
         //         // 支付成功的业务逻辑代码
         //       }, function (datas) {
-        //         wx.redirectTo({
+        //         uni.redirectTo({
         //           url: '/pages/mine/index'
         //         })
         //
@@ -71,7 +71,7 @@
     },
     onShow() {
       var that = this
-      var t = wx.getStorageSync("t")
+      var t = uni.getStorageSync("t")
       checkT(t,
         function () {
           that.loginVisible = true

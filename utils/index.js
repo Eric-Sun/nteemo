@@ -80,6 +80,5 @@ export function getUserToken(context){
 		console.log("getUserToken from cache. userToken="+userToken)
 		return userToken;
 	}
-	
-	
 }
+

@@ -302,7 +302,7 @@
 				for (var i = 0; i < this.detailData.imgList.length; i++) {
 					urlList.push(this.detailData.imgList[i].url);
 				}
-				wx.previewImage({
+				uni.previewImage({
 					current: this.detailData.imgList[index].url, // 当前显示图片的http链接
 					urls: urlList // 需要预览的图片http链接列表
 				})
@@ -312,7 +312,7 @@
 			//   var that = this
 			//   var itemList = ['按时间正序', '按时间倒序']
 			//
-			//   wx.showActionSheet({
+			//   uni.showActionSheet({
 			//     itemList: itemList,
 			//     success: function (res) {
 			//       if (that.replySearchType != res.tapIndex) {

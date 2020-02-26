@@ -69,6 +69,10 @@
         "usingComponents" : true
     },
     "mp-toutiao" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "setting" : {
+            "urlCheck" : false
+        },
+        "appid" : "ttec739ace7359f661"
     }
 }

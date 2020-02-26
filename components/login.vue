@@ -5,6 +5,8 @@
 			<div style='width:100%;padding-left:30rpx;font-size: 28rpx;margin-top:30rpx;'>2、同意当前小程序获取我的微信昵称等其他信息；</div>
 			<div class="button-group">
 				<button open-type="getUserInfo" @getuserinfo="bindGetUserInfo" class="save-btn">授权登陆</button>
+				<button @click="bindGetUserInfo" class="save-btn">tt授权登陆</button>
+
 				<button @click.stop="cancel" class="save-btn">暂不登陆</button>
 			</div>
 		</div>
@@ -33,46 +35,56 @@
 			cancel() {
 				this.$emit("cancelModalClose");
 			},
+			getLoginAction() {
+				//#ifdef MP-WEIXIN
+				return "user.wechatLogin";
+				//#endif
+				//#ifdef MP-TOUTIAO
+				return "user.toutiaoLogin";
+				//#endif
+			},
 			bindGetUserInfo(e) {
-				if (e.mp.detail.userInfo) {
-					var that = this
-					uni.login({
-						success: function(res) {
-							var code = res.code // 微信登录接口返回的 code 参数，下面注册接口需要用到
-							uni.getUserInfo({
-								success: function(res) {
-									uni.setStorageSync('userInfo', res.userInfo)
-									var iv = res.iv
-									var encryptedData = res.encryptedData
-									// 下面开始调用注册接口
-									that.$http({
-											act: 'user.wechatLogin',
-											code: code,
-											encryptedData: encryptedData,
-											iv: iv
-										},
-										function(res) {
-											uni.setStorageSync('t', res.data.t);
-											uni.setStorageSync('userId', res.data.userId)
-											uni.showToast({
-												title:"登录成功",
-												duration:1000,
-												complete:function(){
-													that.$emit("modalClose");
-												}
-											})
-										}
-									)
-								},
-								fail: function(res){
-									this.$emit("modalClose");
-								}
-							})
-						}
-					})
-				} else {
-					this.$emit("modalClose");
-				}
+				var that = this
+				uni.login({
+					success: function(res) {
+						var code = res.code // 微信登录接口返回的 code 参数，下面注册接口需要用到
+						uni.getUserInfo({
+							withCredentials:true,
+							success: function(res) {
+								console.log(res)
+								uni.setStorageSync('userInfo', res.userInfo)
+								var iv = res.iv
+								var encryptedData = res.encryptedData
+								// 下面开始调用注册接口
+								that.$http({
+										act: that.getLoginAction(),
+										code: code,
+										encryptedData: encryptedData,
+										iv: iv
+									},
+									function(res) {
+										uni.setStorageSync('t', res.data.t);
+										uni.setStorageSync('userId', res.data.userId)
+										uni.showToast({
+											title: "登录成功",
+											duration: 1000,
+											complete: function() {
+												that.$emit("modalClose");
+											}
+										})
+									}
+								)
+							},
+							fail: function(res) {
+								this.$emit("modalClose");
+							}
+						})
+					},
+					fail: function(res) {
+						console.log(res)
+					}
+				})
+
 			}
 		}
 	}
