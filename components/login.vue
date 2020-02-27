@@ -4,9 +4,12 @@
 			<div style='width:100%;padding-left:30rpx;font-size: 28rpx;margin-top:30rpx;'>1、同意当前小程序获取我的微信头像；</div>
 			<div style='width:100%;padding-left:30rpx;font-size: 28rpx;margin-top:30rpx;'>2、同意当前小程序获取我的微信昵称等其他信息；</div>
 			<div class="button-group">
+				<!-- #ifdef MP-WEIXIN -->
 				<button open-type="getUserInfo" @getuserinfo="bindGetUserInfo" class="save-btn">授权登陆</button>
-				<button @click="bindGetUserInfo" class="save-btn">tt授权登陆</button>
-
+				<!-- #endif-->
+				<!-- #ifdef MP-TOUTIAO -->
+				<button @click="bindGetUserInfo" class="save-btn">授权登陆</button>
+				<!-- #endif-->
 				<button @click.stop="cancel" class="save-btn">暂不登陆</button>
 			</div>
 		</div>
@@ -49,7 +52,7 @@
 					success: function(res) {
 						var code = res.code // 微信登录接口返回的 code 参数，下面注册接口需要用到
 						uni.getUserInfo({
-							withCredentials:true,
+							withCredentials: true,
 							success: function(res) {
 								console.log(res)
 								uni.setStorageSync('userInfo', res.userInfo)
