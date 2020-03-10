@@ -49,8 +49,9 @@
 		},
 		onShow() {
 			var that = this;
-			var t = uni.getStorageSync("t")
-			checkT(t,
+			this.t = uni.getStorageSync("t")
+			console.log("collection t="+that.t)
+			checkT(this,this,t,
 				function() {
 					that.loginVisible = true
 				},

@@ -3,14 +3,14 @@ import {
 	api
 } from '../const'
 
-export function checkT(t, falseFunction, trueFunction) {
+export function checkT(that,t, falseFunction, trueFunction) {
 	if (t == 0) {
 		falseFunction();
 	} else {
-		new Flyio().get(`${api}`, {
+		that.$http({
 			act: 'user.checkToken',
 			t: t
-		}).then(function(res) {
+		},function(res) {
 			if (res.data.result == 1) {
 				falseFunction();
 			} else {

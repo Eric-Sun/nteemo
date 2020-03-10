@@ -10,11 +10,20 @@
 			<div style='width:100%;padding-left:30rpx;font-size: 28rpx;margin-top:30rpx;'>1、同意当前小程序获取我的头条头像；</div>
 			<div style='width:100%;padding-left:30rpx;font-size: 28rpx;margin-top:30rpx;'>2、同意当前小程序获取我的头条昵称等其他信息；</div>
 			<!-- #endif-->
+			
+			<!-- #ifdef MP-BAIDU -->
+			<div style='width:100%;padding-left:30rpx;font-size: 28rpx;margin-top:30rpx;'>1、同意当前小程序获取我的百度头像；</div>
+			<div style='width:100%;padding-left:30rpx;font-size: 28rpx;margin-top:30rpx;'>2、同意当前小程序获取我的百度昵称等其他信息；</div>
+			<!-- #endif-->
+			
 			<div class="button-group">
 				<!-- #ifdef MP-WEIXIN -->
 				<button open-type="getUserInfo" @getuserinfo="bindGetUserInfo" class="save-btn">授权登陆</button>
 				<!-- #endif-->
 				<!-- #ifdef MP-TOUTIAO -->
+				<button @click="bindGetUserInfo" class="save-btn">授权登陆</button>
+				<!-- #endif-->
+				<!-- #ifdef MP-BAIDU -->
 				<button @click="bindGetUserInfo" class="save-btn">授权登陆</button>
 				<!-- #endif-->
 				<button @click.stop="cancel" class="save-btn">暂不登陆</button>
@@ -28,6 +37,10 @@
 		api,
 		tips_msg
 	} from '../const'
+	import {
+		getUserToken
+	} from '@/utils'
+	
 
 	export default {
 		props: {
@@ -38,7 +51,8 @@
 		},
 		data() {
 			return {
-				accesstoken: ''
+				accesstoken: '',
+				userToken:''
 			}
 		},
 		methods: {
@@ -52,8 +66,12 @@
 				//#ifdef MP-TOUTIAO
 				return "user.toutiaoLogin";
 				//#endif
+				//#ifdef MP-BAIDU
+				return "user.baiduLogin";
+				//#endif
 			},
 			bindGetUserInfo(e) {
+				this.userToken = getUserToken(this);
 				var that = this
 				uni.login({
 					success: function(res) {
@@ -64,13 +82,20 @@
 								console.log(res)
 								uni.setStorageSync('userInfo', res.userInfo)
 								var iv = res.iv
+								
+								//#ifdef MP-BAIDU
+								var encryptedData = res.data
+								//#endif
+								//#ifndef MP-BAIDU
 								var encryptedData = res.encryptedData
+								//#endif
 								// 下面开始调用注册接口
 								that.$http({
 										act: that.getLoginAction(),
 										code: code,
 										encryptedData: encryptedData,
-										iv: iv
+										iv: iv,
+										userToken:that.userToken
 									},
 									function(res) {
 										uni.setStorageSync('t', res.data.t);

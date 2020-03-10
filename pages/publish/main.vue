@@ -202,7 +202,7 @@
 		onShow() {
 			var that = this;
 			this.t = uni.getStorageSync("t");
-			checkT(this.t,
+			checkT(this,this.t,
 				function() {
 					uni.showModal({
 						title: "登陆",

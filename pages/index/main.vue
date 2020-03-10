@@ -77,7 +77,7 @@
 				this.userToken = getUserToken(this);
 				var that = this;
 				this.t = uni.getStorageSync("t");
-				checkT(this.t,
+				checkT(this,this.t,
 					function() {
 						uni.setStorageSync("t", 0);
 						that.t = 0;
@@ -85,7 +85,7 @@
 					},
 					function() {
 						that.t = uni.getStorageSync("t")
-						console.log("t is ok")
+						console.log("t is ok,t="+that.t)
 					}
 				);
 				this.getData(0)

@@ -65,7 +65,7 @@
 		onShow() {
 			var that = this
 			var t = uni.getStorageSync("t")
-			checkT(t,
+			checkT(this,t,
 				function() {
 					// that.loginVisible = true
 				},

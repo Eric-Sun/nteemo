@@ -403,7 +403,7 @@
 			showReplyModal(e) {
 				var that = this;
 				this.t = uni.getStorageSync("t")
-				checkT(this.t,
+				checkT(this,this.t,
 					function() {
 						that.loginVisible = true;
 					},
