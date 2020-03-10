@@ -1,8 +1,15 @@
 <template>
 	<div class='mask' v-if='visible'>
 		<div class="container">
+			<!-- #ifdef MP-WEIXIN -->
 			<div style='width:100%;padding-left:30rpx;font-size: 28rpx;margin-top:30rpx;'>1、同意当前小程序获取我的微信头像；</div>
 			<div style='width:100%;padding-left:30rpx;font-size: 28rpx;margin-top:30rpx;'>2、同意当前小程序获取我的微信昵称等其他信息；</div>
+			<!-- #endif-->
+			
+			<!-- #ifdef MP-TOUTIAO -->
+			<div style='width:100%;padding-left:30rpx;font-size: 28rpx;margin-top:30rpx;'>1、同意当前小程序获取我的头条头像；</div>
+			<div style='width:100%;padding-left:30rpx;font-size: 28rpx;margin-top:30rpx;'>2、同意当前小程序获取我的头条昵称等其他信息；</div>
+			<!-- #endif-->
 			<div class="button-group">
 				<!-- #ifdef MP-WEIXIN -->
 				<button open-type="getUserInfo" @getuserinfo="bindGetUserInfo" class="save-btn">授权登陆</button>
