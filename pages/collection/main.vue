@@ -60,13 +60,14 @@
 		},
 		methods: {
 			async loadData() {
+				var that=this;
 				this.$http({
 					act: 'collection.post.list',
 					t: this.t,
 					pageNum: 0,
 					size: 10
 				}, function(res) {
-					this.currentData = res.data.list.map(_ => {
+					that.currentData = res.data.list.map(_ => {
 						return _.post;
 					})
 				})
