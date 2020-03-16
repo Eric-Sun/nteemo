@@ -455,7 +455,7 @@
 			this.userToken = getUserToken(this)
 			var that = this;
 			this.t = uni.getStorageSync("t")
-			checkT(this.t,
+			checkT(this,this.t,
 				function() {
 					uni.setStorageSync("t", no_token_value);
 					that.t = 0;
