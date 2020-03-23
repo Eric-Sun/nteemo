@@ -1,5 +1,6 @@
 <template>
 	<div class='container'>
+		<uni-nav-bar left-icon="back" left-text="返回" right-text="菜单" title="导航栏组件"></uni-nav-bar>
 		<login :visible='visible' v-on:modalClose='closeModalEvent'></login>
 		<div class='header'>
 			<div :class='{ active: tab==="story" }' data-tab='story' :data-offset='0'>故事贴
@@ -21,6 +22,7 @@
 
 <script>
 	import card from '@/components/card'
+	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 	import {
 		api,
 		barId,
@@ -56,7 +58,8 @@
 
 		components: {
 			card,
-			login
+			login,
+			uniNavBar
 		},
 		onShow() {
 			this.init();
