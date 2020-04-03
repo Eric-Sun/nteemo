@@ -1,7 +1,7 @@
 <template>
 	<div class='container'>
 		<!-- #ifdef APP-PLUS -->
-		<uni-nav-bar left-icon="back" left-text="返回" status-bar="true" right-text="菜单" title="导航栏组件"></uni-nav-bar>
+		<uni-nav-bar   status-bar="true" ></uni-nav-bar>
 		<!-- #endif-->
 		<login :visible='visible' v-on:modalClose='closeModalEvent'></login>
 		<div class='header'>
