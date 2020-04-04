@@ -1,5 +1,8 @@
 <template>
 	<div class="container">
+		<!-- #ifdef APP-PLUS -->
+		<uni-nav-bar  title="我的收藏" left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
+		<!-- #endif-->
 		<login :visible='loginVisible' v-on:modalClose='closeModalEvent'></login>
 		<!--<bottomAction v-if="bottomActionVisible" @close-modal="closeModal" :postId="deletedPostId"></bottomAction>-->
 		<div class='margin' v-for='item in currentData' :key='item.id'>
@@ -59,6 +62,11 @@
 			);
 		},
 		methods: {
+			navigateBack(){
+					uni.navigateBack({
+						
+					})
+			},
 			async loadData() {
 				var that=this;
 				this.$http({

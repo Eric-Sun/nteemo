@@ -1,11 +1,11 @@
 <template>
 	<div class='container'>
 		<!-- #ifdef APP-PLUS -->
-		<uni-nav-bar   status-bar="true" ></uni-nav-bar>
+		<uni-nav-bar title="首页"  status-bar="false"></uni-nav-bar>
 		<!-- #endif-->
 		<login :visible='visible' v-on:modalClose='closeModalEvent'></login>
 		<div class='header'>
-			<div :class='{ active: tab==="story" }' data-tab='story' :data-offset='0'>故事贴
+			<div data-tab='story' :data-offset='0'>故事贴
 			</div>
 			<!--      <div :class='{ active: tab==="diary" }' @click.stop='changeTab($event)' data-tab='diary' :data-offset='1'>一日一记-->
 			<!--      </div>-->
@@ -158,21 +158,21 @@
 				await this.getData(0)
 				uni.stopPullDownRefresh()
 			},
-			changeTab(e) {
-				const currentTab = e.target.dataset.tab
-				const offset = e.target.dataset.offset
-				this.tab = currentTab
-				this.page = 0
-				this.getData(currentTab, 0)
-				this.animation = uni
-					.createAnimation({
-						duration: 1000,
-						timingFunction: 'ease'
-					})
-					.left(`-${offset * 100}vw`)
-					.step()
-					.export()
-			}
+			// changeTab(e) {
+			// 	const currentTab = e.target.dataset.tab
+			// 	const offset = e.target.dataset.offset
+			// 	this.tab = currentTab
+			// 	this.page = 0
+			// 	this.getData(currentTab, 0)
+			// 	this.animation = uni
+			// 		.createAnimation({
+			// 			duration: 1000,
+			// 			timingFunction: 'ease'
+			// 		})
+			// 		.left(`-${offset * 100}vw`)
+			// 		.step()
+			// 		.export()
+			// }
 		}
 	}
 </script>

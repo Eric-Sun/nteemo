@@ -1,5 +1,5 @@
 {
-    "name" : "nteemo",
+    "name" : "豆子社区",
     "appid" : "__UNI__0E153C2",
     "description" : "",
     "versionName" : "1.0.0",
@@ -51,7 +51,8 @@
                 "oauth" : {},
                 "ad" : {}
             }
-        }
+        },
+        "compilerVersion" : 2
     },
     /* 快应用特有相关 */
     "quickapp" : {},

@@ -1,5 +1,8 @@
 <template>
 	<div class='container'>
+		<!-- #ifdef APP-PLUS -->
+		<uni-nav-bar title="回复详情" left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
+		<!-- #endif-->
 		<login :visible='loginVisible' v-on:modalClose='closeModalEvent'></login>
 		<sendReply v-if='sendVisible' @close-modal='closeModal' @reply-success='replySuccess' :content='content' :postId='postId'
 		 :replyId='replyId' :postAnonymous='postAnonymous' :isPostUserId='isPostUserId' :replyUserName='replyUserName'></sendReply>
@@ -104,6 +107,11 @@
 		},
 
 		methods: {
+			navigateBack(){
+					uni.navigateBack({
+						
+					})
+			},
 			onScroll: debounceOnScroll(),
 			async getData() {
 				const t = uni.getStorageSync('t')

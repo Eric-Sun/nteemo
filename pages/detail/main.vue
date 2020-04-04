@@ -1,7 +1,10 @@
 <template>
 	<div class='container'>
+		<!-- #ifdef APP-PLUS -->
+		<uni-nav-bar left-icon="back" @clickLeft="navigateBack" title="帖子详情" status-bar="false"></uni-nav-bar>
+		<!-- #endif-->
 		<img v-if="isShare==1" @click.stop='backHome' class='d-back-home' src='http://cdn.xcx.pemarket.com.cn/icon-Return%20to%20the%20home%20page.png'>
-		<loginTips></loginTips>
+		<!-- <loginTips></loginTips> -->
 		<login :visible='loginVisible' v-on:modalClose='closeModalEvent' v-on:cancelModalClose='cancelModalClose'></login>
 		<sendReply v-if='sendVisible' @close-modal='closeModal' @reply-success='replySuccess' :content='content' :postId='id'
 		 :replyId='replyId' :isPostUserId='isPostUserId' :postAnonymous='postAnonymous' :replyUserName='replyUserName'></sendReply>
@@ -181,6 +184,11 @@
 
 		},
 		methods: {
+			navigateBack(){
+					uni.navigateBack({
+						
+					})
+			},
 			// 点击左箭头，往前退一个页面
 			backPage() {
 				if (this.pageNum == 0) {
@@ -443,9 +451,9 @@
 				this.sendVisible = false
 			}
 		},
-		onLoad() {
-			this.id = this.$root.$mp.query.postId
-			if (this.$root.$mp.query.share == 1) {
+		onLoad(option) {
+			this.id = option.postId
+			if (option.share == 1) {
 				this.isShare = 1;
 			}
 		},

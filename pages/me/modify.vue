@@ -1,5 +1,8 @@
 <template>
 	<div class="container">
+		<!-- #ifdef APP-PLUS -->
+		<uni-nav-bar title="修改用户资料" left-icon="back" @clickLeft="navigateBack"  status-bar="false"></uni-nav-bar>
+		<!-- #endif-->
 		<div>
 			<img :src='user.avatarUrl' class='img' @click="uploadImg()" ref="inputer">
 		</div>
@@ -32,6 +35,11 @@
 			this.getUserInfo();
 		},
 		methods: {
+			navigateBack(){
+					uni.navigateBack({
+						
+					})
+			},
 			getUserInfo() {
 				const t = uni.getStorageSync('t')
 				var that = this;

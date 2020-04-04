@@ -1,5 +1,8 @@
 <template>
 	<div class="container">
+		<!-- #ifdef APP-PLUS -->
+		<uni-nav-bar title="发布" left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
+		<!-- #endif-->
 		<login :visible='loginVisible' v-on:modalClose='closeModalEvent'></login>
 		<div class='list'>
 			<span>标题:</span>
@@ -70,6 +73,11 @@
 			}
 		},
 		methods: {
+			navigateBack(){
+					uni.navigateBack({
+						
+					})
+			},
 			async uploadImg() {
 				var that = this;
 				uni.chooseImage({

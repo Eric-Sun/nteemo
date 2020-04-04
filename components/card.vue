@@ -27,7 +27,7 @@
 		</div>
 		<div v-if="!hidden" class='foot'>
 			<div class="reply-items" @click.stop="goDetail($event)">
-				<img class="reply-img" @click="showReplyModal" src="@/static/comment.png" />
+				<img class="reply-img" src="@/static/comment.png" />
 				<div class="reply-count">{{item.replyCount}}</div>
 			</div>
 			<button class="wechat-share" open-type="share" plain="true" />

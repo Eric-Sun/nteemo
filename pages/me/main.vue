@@ -1,5 +1,8 @@
 <template>
 	<div class="container">
+		<!-- #ifdef APP-PLUS -->
+		<uni-nav-bar title="我的页面" left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
+		<!-- #endif-->
 		<login :visible='loginVisible' v-on:modalClose='closeModalEvent' v-on:cancelModalClose='cancelModalClose'></login>
 		<authorHead :user='user' v-on:login='login' v-on:toModifyPage="toModifyPage"></authorHead>
 		<div class='list'>
@@ -33,6 +36,11 @@
 			login
 		},
 		methods: {
+			navigateBack(){
+					uni.navigateBack({
+						
+					})
+			},
 			toModifyPage() {
 				uni.navigateTo({
 					url: `modify`

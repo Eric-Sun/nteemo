@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+	  <!-- #ifdef APP-PLUS -->
+	  <uni-nav-bar  title="列表"  left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
+	  <!-- #endif-->
     <login :visible='loginVisible' v-on:modalClose='closeModalEvent'></login>
     <!--<bottomAction v-if="bottomActionVisible" @close-modal="closeModal" :postId="deletedPostId"></bottomAction>-->
     <div class='margin' v-for='item in currentData' :key='item.id'>
@@ -14,9 +17,7 @@
   import bottomAction from '../../components/bottomAction'
   import {checkT} from '../../utils/net'
   import login from '../../components/login'
-
-
-
+  
   export default {
     data() {
       return {
@@ -56,6 +57,11 @@
       );
     },
     methods: {
+		navigateBack(){
+				uni.navigateBack({
+					
+				})
+		},
       loadData() {
         // from 最近话题 最近回复
         switch (this.type) {

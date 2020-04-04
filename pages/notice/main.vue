@@ -1,5 +1,8 @@
 <template>
 	<div class='container'>
+		<!-- #ifdef APP-PLUS -->
+		<uni-nav-bar title="我的通知" left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
+		<!-- #endif-->
 		<login :visible='loginVisible' v-on:modalClose='closeModalEvent'></login>
 		<div v-if="noticeList.length==0" class="no-data">无数据</div>
 		<div v-if="noticeList.length>0">
@@ -105,6 +108,11 @@
 				});
 		},
 		methods: {
+			navigateBack(){
+					uni.navigateBack({
+						
+					})
+			},
 			async readAllNotices() {
 				this.$http({
 					t: this.t,

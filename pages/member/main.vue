@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+	  <!-- #ifdef APP-PLUS -->
+	  <uni-nav-bar   status-bar="false"></uni-nav-bar>
+	  <!-- #endif-->
     <button @click.stop="purchase">购买会员</button>
   </div>
 </template>
