@@ -59,6 +59,12 @@
 			"style": {
 				"navigationBarTitleText": "帖子"
 			}
+		},
+		{
+			"path": "pages/login/main",
+			"style": {
+				"navigationBarTitleText": "登陆"
+			}
 		}
 		// "pages/detail/main",
 		// "pages/list/main",

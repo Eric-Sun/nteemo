@@ -1,9 +1,8 @@
 <template>
 	<div class='container'>
 		<!-- #ifdef APP-PLUS -->
-		<uni-nav-bar title="我的通知" left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
+		<uni-nav-bar title="我的通知" status-bar="false"></uni-nav-bar>
 		<!-- #endif-->
-		<login :visible='loginVisible' v-on:modalClose='closeModalEvent'></login>
 		<div v-if="noticeList.length==0" class="no-data">无数据</div>
 		<div v-if="noticeList.length>0">
 			<div class='notice' v-for='item in formatNoticeList' :key='item.id' :data-id='item.id'>
@@ -72,7 +71,6 @@
 			return {
 				t: 0,
 				noticeList: [],
-				loginVisible: false
 			}
 		},
 		computed: {
@@ -88,7 +86,7 @@
 		onShow() {
 			var that = this;
 			this.t = uni.getStorageSync("t");
-			checkT(this,this.t,
+			checkT(this, this.t,
 				function() {
 					uni.showModal({
 						title: "登陆",
@@ -96,7 +94,9 @@
 						confirmText: "去登陆",
 						success: function(res) {
 							if (res.confirm) {
-								that.loginVisible = true;
+								uni.navigateTo({
+									url: "../login/main"
+								})
 							} else if (res.cancel) {}
 						}
 					})
@@ -108,11 +108,6 @@
 				});
 		},
 		methods: {
-			navigateBack(){
-					uni.navigateBack({
-						
-					})
-			},
 			async readAllNotices() {
 				this.$http({
 					t: this.t,
@@ -122,11 +117,6 @@
 						index: 2
 					})
 				})
-			},
-			closeModalEvent() {
-				console.log("fd");
-				this.loginVisible = false
-				this.t = uni.getStorageSync("t")
 			},
 			goPostDetail(e) {
 				const postId = e.currentTarget.dataset.postid
@@ -140,7 +130,7 @@
 				})
 			},
 			async getData() {
-				console.log("notice t="+this.t)
+				console.log("notice t=" + this.t)
 				var that = this
 				this.$http({
 					act: 'notice.list',
@@ -167,7 +157,7 @@
 			font-size: 35rpx;
 			padding-top: 400rpx;
 			padding-bottom: 650rpx;
-			color:#C0C0C0
+			color: #C0C0C0
 		}
 
 		.notice {

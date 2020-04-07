@@ -5,7 +5,6 @@
 		<!-- #endif-->
 		<img v-if="isShare==1" @click.stop='backHome' class='d-back-home' src='http://cdn.xcx.pemarket.com.cn/icon-Return%20to%20the%20home%20page.png'>
 		<!-- <loginTips></loginTips> -->
-		<login :visible='loginVisible' v-on:modalClose='closeModalEvent' v-on:cancelModalClose='cancelModalClose'></login>
 		<sendReply v-if='sendVisible' @close-modal='closeModal' @reply-success='replySuccess' :content='content' :postId='id'
 		 :replyId='replyId' :isPostUserId='isPostUserId' :postAnonymous='postAnonymous' :replyUserName='replyUserName'></sendReply>
 		<div>
@@ -135,13 +134,13 @@
 		onUnload() {
 			// const t = uni.getStorageSync("t");
 			// if (t != 0) {
-				this.$http({
-					act: 'post.updateCursor',
-					postId: this.id,
-					pageNum: this.pageNum,
-					cursor: this.cursor,
-					userToken: this.userToken
-				}, function() {})
+			this.$http({
+				act: 'post.updateCursor',
+				postId: this.id,
+				pageNum: this.pageNum,
+				cursor: this.cursor,
+				userToken: this.userToken
+			}, function() {})
 			// }
 			this.detailData = {}
 			this.currentReplies = []
@@ -184,10 +183,10 @@
 
 		},
 		methods: {
-			navigateBack(){
-					uni.navigateBack({
-						
-					})
+			navigateBack() {
+				uni.navigateBack({
+
+				})
 			},
 			// 点击左箭头，往前退一个页面
 			backPage() {
@@ -204,15 +203,6 @@
 					this.pageNum = this.pageNum - 1
 					this.getReplyData(this.pageNum);
 				}
-			},
-			closeModalEvent() {
-				this.loginVisible = false
-				this.t = uni.getStorageSync("t")
-				this.getPostData()
-				this.getReplyData(-1)
-			},
-			cancelModalClose() {
-				this.loginVisible = false
 			},
 			// 点击右箭头，往前进一个页面
 			goPage() {
@@ -296,7 +286,9 @@
 						confirmText: "去登陆",
 						success: function(res) {
 							if (res.confirm) {
-								that.loginVisible = true;
+								uni.navigateTo({
+									url: "../login/main"
+								})
 							} else if (res.cancel) {}
 						}
 					})
@@ -411,9 +403,11 @@
 			showReplyModal(e) {
 				var that = this;
 				this.t = uni.getStorageSync("t")
-				checkT(this,this.t,
+				checkT(this, this.t,
 					function() {
-						that.loginVisible = true;
+						uni.navigateTo({
+							url: "../login/main"
+						})
 					},
 					function() {
 						var userId = uni.getStorageSync('userId')
@@ -463,7 +457,7 @@
 			this.userToken = getUserToken(this)
 			var that = this;
 			this.t = uni.getStorageSync("t")
-			checkT(this,this.t,
+			checkT(this, this.t,
 				function() {
 					uni.setStorageSync("t", no_token_value);
 					that.t = 0;
@@ -501,7 +495,6 @@
 				// canGetMoreReply: true,
 				replySearchType: 0, //回帖的排序规则，默认正序
 				requestAction: 'reply.list',
-				loginVisible: false,
 				isShare: 0,
 				t: 0,
 				level1ReplySize: 0,

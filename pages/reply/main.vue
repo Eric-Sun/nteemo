@@ -3,7 +3,6 @@
 		<!-- #ifdef APP-PLUS -->
 		<uni-nav-bar title="回复详情" left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
 		<!-- #endif-->
-		<login :visible='loginVisible' v-on:modalClose='closeModalEvent'></login>
 		<sendReply v-if='sendVisible' @close-modal='closeModal' @reply-success='replySuccess' :content='content' :postId='postId'
 		 :replyId='replyId' :postAnonymous='postAnonymous' :isPostUserId='isPostUserId' :replyUserName='replyUserName'></sendReply>
 		<div>
@@ -98,7 +97,7 @@
 		},
 		onShow() {
 			// var that = this;
-			// var t = uni.getStorageSync("t")
+			this.t = uni.getStorageSync("t")
 			// checkT(t,
 			// 	function() {
 			// 		that.loginVisible = true
@@ -195,8 +194,7 @@
 				postId: 0,
 				postAnonymous: 0,
 				postUserId: 0,
-				isPostUserId: false,
-				loginVisible: false
+				isPostUserId: false
 			}
 		}
 	}

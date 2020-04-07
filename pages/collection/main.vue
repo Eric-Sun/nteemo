@@ -1,9 +1,8 @@
 <template>
 	<div class="container">
 		<!-- #ifdef APP-PLUS -->
-		<uni-nav-bar  title="我的收藏" left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
+		<uni-nav-bar title="我的收藏" left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
 		<!-- #endif-->
-		<login :visible='loginVisible' v-on:modalClose='closeModalEvent'></login>
 		<!--<bottomAction v-if="bottomActionVisible" @close-modal="closeModal" :postId="deletedPostId"></bottomAction>-->
 		<div class='margin' v-for='item in currentData' :key='item.id'>
 			<card :item='item' :hidden='true' @reloadCardList="reloadCardList" @close-modal='closeModal'></card>
@@ -34,7 +33,6 @@
 				deletedPostId: 0,
 				type: '',
 				otherUserId: 0,
-				loginVisible: false
 			}
 		},
 		components: {
@@ -43,32 +41,46 @@
 			login
 		},
 		onLoad(options) {
-			this.type = options.type
-			console.log('type=' + this.type)
-			this.t = uni.getStorageSync('t')
-			this.otherUserId = options.otherUserId
-			this.loadData()
+	
 
 		},
 		onShow() {
+			this.currentData=[];
 			var that = this;
 			this.t = uni.getStorageSync("t")
-			console.log("collection t="+that.t)
-			checkT(this,this,t,
+			console.log("collection t=" + that.t)
+			checkT(this,this.t,
 				function() {
-					that.loginVisible = true
+					uni.showModal({
+						title: "登陆",
+						content: "需要登陆后才可以进行发布",
+						confirmText: "去登陆",
+						success: function(res) {
+							if (res.confirm) {
+								// that.loginVisible = true;
+								uni.navigateTo({
+									url:"../login/main"
+								})
+							} else if (res.cancel) {}
+						}
+					})
 				},
-				function() {}
-			);
+				function() {
+					this.type = options.type
+					console.log('type=' + this.type)
+					this.t = uni.getStorageSync('t')
+					this.otherUserId = options.otherUserId
+					this.loadData()
+				});
 		},
 		methods: {
-			navigateBack(){
-					uni.navigateBack({
-						
-					})
+			navigateBack() {
+				uni.navigateBack({
+
+				})
 			},
 			async loadData() {
-				var that=this;
+				var that = this;
 				this.$http({
 					act: 'collection.post.list',
 					t: this.t,

@@ -3,7 +3,6 @@
 	  <!-- #ifdef APP-PLUS -->
 	  <uni-nav-bar  title="列表"  left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
 	  <!-- #endif-->
-    <login :visible='loginVisible' v-on:modalClose='closeModalEvent'></login>
     <!--<bottomAction v-if="bottomActionVisible" @close-modal="closeModal" :postId="deletedPostId"></bottomAction>-->
     <div class='margin' v-for='item in currentData' :key='item.id'>
       <card :item='item' :hidden='true' @reloadCardList="reloadCardList" @close-modal='closeModal'></card>
@@ -49,7 +48,9 @@
       checkT(this,t,
         function () {
 			console.log("t is ok")
-          that.loginVisible = true
+          uni.navigateTo({
+          	url:"../login/main"
+          })
         },
         function () {
 			console.log("t is expired;")

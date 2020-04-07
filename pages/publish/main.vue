@@ -1,9 +1,8 @@
 <template>
 	<div class="container">
 		<!-- #ifdef APP-PLUS -->
-		<uni-nav-bar title="发布" left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
+		<uni-nav-bar title="发布" status-bar="false"></uni-nav-bar>
 		<!-- #endif-->
-		<login :visible='loginVisible' v-on:modalClose='closeModalEvent'></login>
 		<div class='list'>
 			<span>标题:</span>
 			<input class='input' type="text" placeholder="最少10个字" v-model="title">
@@ -73,11 +72,6 @@
 			}
 		},
 		methods: {
-			navigateBack(){
-					uni.navigateBack({
-						
-					})
-			},
 			async uploadImg() {
 				var that = this;
 				uni.chooseImage({
@@ -131,12 +125,6 @@
 			},
 			changeTab(e) {
 				this.tab = e.target.dataset.tab
-			},
-			closeModalEvent() {
-				console.log("fdafdas")
-				this.loginVisible = false
-				this.t = uni.getStorageSync("t")
-				console.log(this.t);
 			},
 			async handle() {
 				if (this.title.length == 0) {
@@ -218,7 +206,10 @@
 						confirmText: "去登陆",
 						success: function(res) {
 							if (res.confirm) {
-								that.loginVisible = true;
+								// that.loginVisible = true;
+								uni.navigateTo({
+									url:"../login/main"
+								})
 							} else if (res.cancel) {}
 						}
 					})

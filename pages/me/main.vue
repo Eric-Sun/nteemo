@@ -1,15 +1,16 @@
 <template>
 	<div class="container">
 		<!-- #ifdef APP-PLUS -->
-		<uni-nav-bar title="我的页面" left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
+		<uni-nav-bar title="我的页面" status-bar="false"></uni-nav-bar>
 		<!-- #endif-->
-		<login :visible='loginVisible' v-on:modalClose='closeModalEvent' v-on:cancelModalClose='cancelModalClose'></login>
 		<authorHead :user='user' v-on:login='login' v-on:toModifyPage="toModifyPage"></authorHead>
 		<div class='list'>
 			<!--<navigator class='list-item' @click.stop='setListFrom' url='/pages/list/main?type=collect' data-item='collect'>我的收藏</navigator>-->
-			<navigator class='list-item' @click.stop='setListFrom' url='/pages/list/main?type=topic' data-item='topic'>最近话题</navigator>
+			<!-- <navigator class='list-item' @click.stop='setListFrom' url='/pages/list/main?type=topic' data-item='topic'>最近话题</navigator> -->
 			<navigator class='list-item' url='/pages/collection/main'>我的收藏</navigator>
+			<!-- #ifndef APP-PLUS -->
 			<button open-type='feedback'>意见反馈</button>
+			<!-- #endif -->
 		</div>
 	</div>
 </template>
@@ -27,7 +28,7 @@
 	export default {
 		data() {
 			return {
-				loginVisible: false,
+				
 				user: {}
 			}
 		},
@@ -36,11 +37,6 @@
 			login
 		},
 		methods: {
-			navigateBack(){
-					uni.navigateBack({
-						
-					})
-			},
 			toModifyPage() {
 				uni.navigateTo({
 					url: `modify`
@@ -49,12 +45,10 @@
 			setListFrom(e) {
 				uni.setStorageSync('fromItem', e.target.dataset.item)
 			},
-			closeModalEvent() {
-				this.loginVisible = false
-				this.getData()
-			},
 			login() {
-				this.loginVisible = true
+				uni.navigateTo({
+					url:"../login/main"
+				})
 			},
 			async getData() {
 				const t = uni.getStorageSync('t')
