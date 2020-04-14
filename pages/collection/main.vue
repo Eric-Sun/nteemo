@@ -40,11 +40,10 @@
 			bottomAction,
 			login
 		},
-		onLoad(options) {
-	
+		onLoad() {
 
 		},
-		onShow() {
+		onShow(options) {
 			this.currentData=[];
 			var that = this;
 			this.t = uni.getStorageSync("t")
@@ -53,7 +52,7 @@
 				function() {
 					uni.showModal({
 						title: "登陆",
-						content: "需要登陆后才可以进行发布",
+						content: "需要登陆后才可以查看收藏信息",
 						confirmText: "去登陆",
 						success: function(res) {
 							if (res.confirm) {
@@ -66,11 +65,8 @@
 					})
 				},
 				function() {
-					this.type = options.type
-					console.log('type=' + this.type)
-					this.t = uni.getStorageSync('t')
-					this.otherUserId = options.otherUserId
-					this.loadData()
+					that.t = uni.getStorageSync('t')
+					that.loadData()
 				});
 		},
 		methods: {

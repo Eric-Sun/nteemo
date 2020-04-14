@@ -7,6 +7,10 @@
 
 
 		<!-- #ifdef APP-PLUS -->
+		<div class="content">
+			<div class="title">豆子社区</div>
+			<div class="tips">轻轻的说出你的秘密</div>
+		</div>
 		<button @click="bindGetUserInfo" class="app-wechat-login">微信授权登陆</button>
 		<!-- #endif-->
 		<!-- #ifdef MP-WEIXIN -->
@@ -140,11 +144,25 @@
 		flex-direction: column;
 		align-items: center;
 
-		.app-wechat-login{
-			margin-top: 950rpx;
-			background-color:yellow;
-			font-weight: 5;
+		.title{
+			margin-top: 100rpx;
+			align-items: center;
+			font-size: 80rpx;
 		}
+		.tips{
+			margin-top:40rpx;
+			margin-left: 70rpx;
+			font-size: 40rpx;
+		}
+
+
+		.app-wechat-login {
+			margin-top: 750rpx;
+			background-color: #feb331;
+			font-size: 25rpx;
+
+		}
+
 		.input {
 			border-bottom: 2rpx solid $borderColor;
 			width: 600rpx;

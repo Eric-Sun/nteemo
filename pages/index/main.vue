@@ -64,7 +64,11 @@
 			uniNavBar
 		},
 		onShow() {
+			// 为了测试
+			// uni.setStorageSync("t",1586763893677)
+			
 			this.init();
+					
 		},
 		onShareAppMessage: function() {
 			return {
