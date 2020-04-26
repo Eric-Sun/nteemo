@@ -11,7 +11,7 @@
 				<label class="button" @click.stop="send">提交</label>
 			</div>
 			<div class="inputText">
-				<textarea class='text' v-model="content" placeholder="说点啥....."></textarea>
+				<textarea class='text' focus="true" v-model="content" placeholder-style="color: #BABABA;" placeholder="说点什么吧"></textarea>
 			</div>
 
 			<!--      <div class="help-block">上传图片(建议图片格式为：JPEG/BMP/PNG/GIF，大小不超过5M，最多可上传9张)</div>-->
@@ -189,7 +189,7 @@
 			/*justify-content: space-between;*/
 			position: absolute;
 			bottom: 0;
-			height: 90vh;
+			height: 30vh;
 			width: 100%;
 			box-sizing: border-box;
 			padding: 5px;
@@ -219,7 +219,8 @@
 			.inputText {
 
 				.text {
-					border: 1rpx solid $borderColor;
+					/* border: 1rpx solid $borderColor; */
+					margin:10rpx;
 					margin: 10rpx;
 					height: 80vh;
 

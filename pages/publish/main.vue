@@ -4,30 +4,30 @@
 		<uni-nav-bar title="发布" status-bar="false"></uni-nav-bar>
 		<!-- #endif-->
 		<div class='list'>
-			<span>标题:</span>
-			<input class='input' type="text" placeholder="最少10个字" v-model="title">
+			<input class='input' type="text" placeholder-style="color: #BABABA;" placeholder="标题" v-model="title">
 		</div>
-		<picker class='picker' @change="bindPickerChange($event)" :value="type.index" :range="type.pickerData">
+		<!-- <picker class='picker' @change="bindPickerChange($event)" :value="type.index" :range="type.pickerData">
 			<span>类型:</span><span style='margin-left:200rpx;'>故事贴</span>
-		</picker>
+		</picker> -->
 		<!--    <picker class='picker' @change="bindPickerChange1($event)" :value="anon.index" :range="anon.pickerData">-->
 		<!--      <span>匿名:</span><span style='margin-left:200rpx;'>{{anon.pickerData[anon.index]}}</span>-->
 		<!--    </picker>-->
 
-		<textarea v-show="tab==='markdown'" class='textarea' v-model="content"></textarea>
-		<!-- <div class="help-block">上传图片(建议图片格式为：JPEG/BMP/PNG/GIF，大小不超过5M，最多可上传9张)</div>
+		<textarea v-show="tab==='markdown'" maxlength="-1" placeholder-style="color: #BABABA;" class='textarea' placeholder="静静写出来你想说的"
+		 v-model="content"></textarea>
+		<!-- <div class="help-block">上传图片(建议图片格式为：JPEG/BMP/PNG/GIF，大小不超过5M，最多可上传9张)</div> -->
 		<lu class="upload-imgs">
 			<li v-if="imgList.length>=9 ? false : true">
 				<input type="file" class="upload" @click="uploadImg()" ref="inputer" />
 				<a class="add"><i class="iconfont icon-plus"></i>
-					<p>点击上传</p>
+					<p>点击上传图片</p>
 				</a>
 			</li>
 			<li v-for='(img, index) in imgList' :key='index'>
 				<p class="img"><img :src="img.url"><a class="close" @click="delImg(index)">x</a>
 				</p>
 			</li>
-		</lu> -->
+		</lu>
 		<button @click.stop="handle">发帖</button>
 	</div>
 </template>
@@ -192,13 +192,14 @@
 							duration: 2000
 						})
 					}
-				},function(){},[6]);
+				}, function() {}, [6]);
 			}
 		},
 		onShow() {
 			var that = this;
 			this.t = uni.getStorageSync("t");
-			checkT(this,this.t,
+			this.imgList=[];
+			checkT(this, this.t,
 				function() {
 					uni.showModal({
 						title: "登陆",
@@ -208,14 +209,14 @@
 							if (res.confirm) {
 								// that.loginVisible = true;
 								uni.navigateTo({
-									url:"../login/main"
+									url: "../login/main"
 								})
 							} else if (res.cancel) {}
 						}
 					})
 				},
 				function() {
-					
+
 				});
 		}
 	}
@@ -224,7 +225,10 @@
 <style lang='scss' scoped>
 	.container {
 		height: 100vh;
+		width: 100%;
 		background-color: rgb(245, 245, 249);
+
+
 
 		.list {
 			display: flex;
@@ -236,7 +240,6 @@
 			line-height: 90rpx;
 
 			.input {
-				margin-left: 150rpx;
 				height: 90rpx;
 				line-height: 90rpx;
 			}
@@ -266,7 +269,7 @@
 			width: 100%;
 			background-color: white;
 			margin-bottom: 30rpx;
-			height: 300rpx;
+			height: 500rpx;
 			padding: 0 30rpx;
 			box-sizing: border-box;
 		}
