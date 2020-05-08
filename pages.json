@@ -31,6 +31,12 @@
 			}
 		},
 		{
+			"path": "pages/login/mobile",
+			"style": {
+				"navigationBarTitleText": "手机号登陆"
+			}
+		},
+		{
 			"path": "pages/me/modify",
 			"style": {
 				"navigationBarTitleText": "修改信息"
@@ -76,7 +82,11 @@
 		// "pages/collection/main",
 		// "pages/member/main"
 
-	],
+	    ,{
+            "path" : "pages/login/mobile/mobile",
+            "style" : {}
+        }
+    ],
 	"globalStyle": {
 		"backgroundTextStyle": "light",
 		"navigationBarBackgroundColor": "#fff",

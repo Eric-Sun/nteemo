@@ -208,9 +208,17 @@
 						success: function(res) {
 							if (res.confirm) {
 								// that.loginVisible = true;
+								//#ifndef APP-PLUS 
 								uni.navigateTo({
 									url: "../login/main"
 								})
+								//#endif
+								
+								//#ifdef APP_PLUS
+								uni.navigateTo({
+									url: "../login/mobile"
+								})
+								//#endif
 							} else if (res.cancel) {}
 						}
 					})

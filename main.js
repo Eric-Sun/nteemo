@@ -8,7 +8,7 @@ import {
 	api
 } from '@/const'
 
-Vue.prototype.$http = function(data, successFunction, failFunction, excludeErrorCode) {
+Vue.prototype.$http = function(data, successFunction, failFunction=function(){}, excludeErrorCode=[6]) {
 	uni.request({
 		url: api,
 		data: data,

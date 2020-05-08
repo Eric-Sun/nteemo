@@ -282,13 +282,22 @@
 				} else {
 					uni.showModal({
 						title: "登陆",
-						content: "需要登陆后才可以进行收藏",
+						content: "需要登陆后才可以进行发布",
 						confirmText: "去登陆",
 						success: function(res) {
 							if (res.confirm) {
+								// that.loginVisible = true;
+								//#ifndef APP-PLUS 
 								uni.navigateTo({
 									url: "../login/main"
 								})
+								//#endif
+								
+								//#ifdef APP_PLUS
+								uni.navigateTo({
+									url: "../login/mobile"
+								})
+								//#endif
 							} else if (res.cancel) {}
 						}
 					})
@@ -405,8 +414,26 @@
 				this.t = uni.getStorageSync("t")
 				checkT(this, this.t,
 					function() {
-						uni.navigateTo({
-							url: "../login/main"
+						uni.showModal({
+							title: "登陆",
+							content: "需要登陆后才可以进行发布",
+							confirmText: "去登陆",
+							success: function(res) {
+								if (res.confirm) {
+									// that.loginVisible = true;
+									//#ifndef APP-PLUS 
+									uni.navigateTo({
+										url: "../login/main"
+									})
+									//#endif
+									
+									//#ifdef APP_PLUS
+									uni.navigateTo({
+										url: "../login/mobile"
+									})
+									//#endif
+								} else if (res.cancel) {}
+							}
 						})
 					},
 					function() {
