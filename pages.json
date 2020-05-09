@@ -82,18 +82,15 @@
 		// "pages/collection/main",
 		// "pages/member/main"
 
-	    ,{
-            "path" : "pages/login/mobile/mobile",
-            "style" : {}
-        }
-    ],
+
+	],
 	"globalStyle": {
 		"backgroundTextStyle": "light",
 		"navigationBarBackgroundColor": "#fff",
 		"navigationBarTitleText": "首页",
 		"navigationBarTextStyle": "black",
-		"app-plus":{
-			"titleNView":false
+		"app-plus": {
+			"titleNView": false
 		}
 	},
 	"tabBar": {

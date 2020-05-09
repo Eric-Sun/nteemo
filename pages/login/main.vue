@@ -2,7 +2,7 @@
 	<div class="container">
 
 		<!-- #ifdef APP-PLUS -->
-		<uni-nav-bar left-icon="back" @clickLeft="navigateBack" title="登陆页面" status-bar="false"></uni-nav-bar>
+		<uni-nav-bar left-icon="back" fixed="true" @clickLeft="navigateBack" title="登陆页面" status-bar="false"></uni-nav-bar>
 		<!-- #endif-->
 
 

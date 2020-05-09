@@ -1,7 +1,7 @@
 <template>
 	<div class='container'>
 		<!-- #ifdef APP-PLUS -->
-		<uni-nav-bar title="回复详情" left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
+		<uni-nav-bar title="回复详情" fixed="true"  left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
 		<!-- #endif-->
 		<sendReply v-if='sendVisible' @close-modal='closeModal' @reply-success='replySuccess' :content='content' :postId='postId'
 		 :replyId='replyId' :postAnonymous='postAnonymous' :isPostUserId='isPostUserId' :replyUserName='replyUserName'></sendReply>
@@ -178,11 +178,11 @@
 				this.sendVisible = false
 			}
 		},
-		onLoad() {
-			this.currentReplyId = this.$root.$mp.query.replyId
-			this.postId = this.$root.$mp.query.postId
-			this.postAnonymous = this.$root.$mp.query.anonymous
-			this.postUserId = this.$root.$mp.query.postUserId
+		onLoad(option) {
+			this.currentReplyId = option.replyId
+			this.postId = option.postId
+			this.postAnonymous = option.anonymous
+			this.postUserId = option.postUserId
 		},
 		data() {
 			return {

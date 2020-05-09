@@ -1,7 +1,7 @@
 <template>
 	<div class='container'>
 		<!-- #ifdef APP-PLUS -->
-		<uni-nav-bar title="我的通知" status-bar="false"></uni-nav-bar>
+		<uni-nav-bar title="我的通知" fixed="true" status-bar="false"></uni-nav-bar>
 		<!-- #endif-->
 		<div v-if="noticeList.length==0" class="no-data">无数据</div>
 		<div v-if="noticeList.length>0">

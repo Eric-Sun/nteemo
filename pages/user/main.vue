@@ -1,7 +1,7 @@
 <template>
 	<div class='container'>
 		<!-- #ifdef APP-PLUS -->
-		<uni-nav-bar title="用户" left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
+		<uni-nav-bar title="用户" fixed="true" left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
 		<!-- #endif-->
 		<authorHead :user='user'></authorHead>
 		<div class='body'>

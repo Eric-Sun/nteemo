@@ -1,5 +1,5 @@
 <template>
-	<div class='container'>
+	<div class='container-card'>
 		<div class='head'>
 			<img v-if="item.anonymous==0" class='head-img' :src='item.userAvatarUrl' @click.stop='goAuthorPage' :data-userid="item.userId">
 			<img v-if="item.anonymous==1" class='head-img' :src='item.userAvatarUrl' :data-userid="item.userId">
@@ -162,9 +162,9 @@
 </script>
 
 <style lang='scss' scoped>
-	.container {
+	.container-card {
 		/*height: 330rpx;*/
-		padding: 20rpx;
+		margin: 20rpx;
 		background-color: white;
 		display: flex;
 		flex-direction: column;
@@ -226,6 +226,7 @@
 			margin-top: 10rpx;
 			margin-bottom: 20rpx;
 			margin-left: 10rpx;
+			margin-right:20rpx;
 
 			.imgs {
 				margin-top: 5rpx;

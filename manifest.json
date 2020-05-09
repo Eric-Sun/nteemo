@@ -52,7 +52,8 @@
                 "ad" : {}
             }
         },
-        "compilerVersion" : 3
+        "compilerVersion" : 3,
+        "nvueLaunchMode" : "fast"
     },
     /* 快应用特有相关 */
     "quickapp" : {},

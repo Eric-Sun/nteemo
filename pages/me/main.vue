@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<!-- #ifdef APP-PLUS -->
-		<uni-nav-bar title="我的页面" status-bar="false"></uni-nav-bar>
+		<uni-nav-bar title="我的页面" fixed="true" status-bar="false"></uni-nav-bar>
 		<!-- #endif-->
 		<authorHead :user='user' v-on:login='login' v-on:toModifyPage="toModifyPage"></authorHead>
 		<div class='list'>

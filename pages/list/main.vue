@@ -1,7 +1,7 @@
 <template>
   <div class="container">
 	  <!-- #ifdef APP-PLUS -->
-	  <uni-nav-bar  title="列表"  left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
+	  <uni-nav-bar  title="列表"  fixed="true" left-icon="back" @clickLeft="navigateBack" status-bar="false"></uni-nav-bar>
 	  <!-- #endif-->
     <!--<bottomAction v-if="bottomActionVisible" @close-modal="closeModal" :postId="deletedPostId"></bottomAction>-->
     <div class='margin' v-for='item in currentData' :key='item.id'>

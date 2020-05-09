@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<uni-nav-bar left-icon="back" @clickLeft="navigateBack" title="登陆页面" status-bar="false"></uni-nav-bar>
+		<uni-nav-bar left-icon="back" fixed="true" @clickLeft="navigateBack" title="登陆页面" status-bar="false"></uni-nav-bar>
 		<div class="mobileInput">
 			<div class="location">+86</div>
 			<input class="mobile" placeholder="请输入手机号" v-model="mobile"></input>
@@ -30,6 +30,11 @@
 			}
 		},
 		methods: {
+			navigateBack() {
+				uni.navigateBack({
+			
+				})
+			},
 			mobileLogin: function() {
 				var that = this;
 				if (!this.checkMobile()) {
@@ -50,7 +55,8 @@
 						title: "登录成功",
 						duration: 1000,
 						complete: function() {
-							that.navigateBack()
+							uni.navigateBack({
+							})
 						}
 					})
 				});

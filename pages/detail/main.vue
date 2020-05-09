@@ -1,7 +1,7 @@
 <template>
 	<div class='container'>
 		<!-- #ifdef APP-PLUS -->
-		<uni-nav-bar left-icon="back" @clickLeft="navigateBack" title="帖子详情" status-bar="false"></uni-nav-bar>
+		<uni-nav-bar left-icon="back" fixed="true" @clickLeft="navigateBack" title="帖子详情" status-bar="false"></uni-nav-bar>
 		<!-- #endif-->
 		<img v-if="isShare==1" @click.stop='backHome' class='d-back-home' src='http://cdn.xcx.pemarket.com.cn/icon-Return%20to%20the%20home%20page.png'>
 		<!-- <loginTips></loginTips> -->
@@ -64,7 +64,7 @@
 
 								</div>
 								<div class="reply-replyList-tips" v-if="item.replySize>1" @click.stop="navigateToReply($event)" :data-replyid="item.replyId"
-								 :data-postid="id" :data-anonymous="detailData.anonymous">一共{{item.replySize}}条回复
+								 :data-postid="id" :data-anonymous="detailData.anonymous">查看全部回复
 								</div>
 							</div>
 							<!--              <img class='up-png' src="/static/go-bottom.png" mode='widthFix' @click.stop="goBottom">-->
@@ -343,6 +343,10 @@
 				var postId = e.currentTarget.dataset.postid
 				var anonymous = e.currentTarget.dataset.anonymous
 				var postUserId = this.detailData.userId
+				
+				console.log("replyId"+replyId);
+				console.log("postId"+postId);
+				console.log("postUserId"+postUserId);
 
 				uni.navigateTo({
 					url: `../reply/main?replyId=${replyId}&postId=${postId}&anonymous=${anonymous}&postUserId=${postUserId}`

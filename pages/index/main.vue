@@ -4,12 +4,12 @@
 		<uni-nav-bar title="首页"  status-bar="false" fixed="true"></uni-nav-bar>
 		<!-- #endif-->
 		<login :visible='visible' v-on:modalClose='closeModalEvent'></login>
-		<div class='header'>
-			<div data-tab='story' :data-offset='0'>故事贴
-			</div>
+		<!-- <div class='header'> -->
+			<!-- <div data-tab='story' :data-offset='0'>故事贴 -->
+			<!-- </div> -->
 			<!--      <div :class='{ active: tab==="diary" }' @click.stop='changeTab($event)' data-tab='diary' :data-offset='1'>一日一记-->
 			<!--      </div>-->
-		</div>
+		<!-- </div> -->
 		<div class="containers" :animation='animation'>
 			<scroll-view scroll-y class='scroll-container' @scroll='onScroll($event)' @scrolltolower='getMore' :scroll-top="cursor">
 				<div v-for='item in data' :key='item.id'>
@@ -123,6 +123,7 @@
 						userToken:this.userToken
 					},
 					function(res) {
+						console.log(res.data.list[0]);
 						if (res.data.list.length != 0) {
 							if (that.data.length > 0 && page === 0) {
 								// 下拉刷新

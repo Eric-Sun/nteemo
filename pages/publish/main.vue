@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<!-- #ifdef APP-PLUS -->
-		<uni-nav-bar title="发布" status-bar="false"></uni-nav-bar>
+		<uni-nav-bar title="发布" fixed="true" status-bar="false"></uni-nav-bar>
 		<!-- #endif-->
 		<div class='list'>
 			<input class='input' type="text" placeholder-style="color: #BABABA;" placeholder="标题" v-model="title">
