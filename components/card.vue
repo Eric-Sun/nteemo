@@ -26,11 +26,14 @@
 			</div>
 		</div>
 		<div v-if="!hidden" class='foot'>
-			<div class="reply-items" @click.stop="goDetail($event)">
-				<img class="reply-img" src="@/static/comment.png" />
-				<div class="reply-count">{{item.replyCount}}</div>
+			<div class="foot-icons">
+				<div class="reply-items" @click.stop="goDetail($event)">
+					<img class="reply-img" src="@/static/comment.png" />
+					<div class="reply-count">{{item.replyCount}}</div>
+				</div>
+				<button class="wechat-share" open-type="share" plain="true" />
 			</div>
-			<button class="wechat-share" open-type="share" plain="true" />
+			<div class="line"></div>
 		</div>
 	</div>
 
@@ -164,7 +167,9 @@
 <style lang='scss' scoped>
 	.container-card {
 		/*height: 330rpx;*/
-		margin: 20rpx;
+		padding-left: 30rpx;
+		padding-right: 30rpx;
+		padding-top: 15rpx;
 		background-color: white;
 		display: flex;
 		flex-direction: column;
@@ -192,10 +197,6 @@
 					font-color: $userName-font-color;
 				}
 
-				.time {
-					font-size: $time-font-size;
-					color: $borderColor;
-				}
 			}
 
 			.top {
@@ -205,7 +206,7 @@
 
 				.ellipsis {
 					width: 50rpx;
-					height: 75rpx;
+					height: 50rpx;
 				}
 			}
 
@@ -226,7 +227,7 @@
 			margin-top: 10rpx;
 			margin-bottom: 20rpx;
 			margin-left: 10rpx;
-			margin-right:20rpx;
+			margin-right: 20rpx;
 
 			.imgs {
 				margin-top: 5rpx;
@@ -265,39 +266,56 @@
 
 		.foot {
 			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
+			flex-direction: column;
+			/* justify-content: space-between; */
 
-			.reply-items {
+			.foot-icons {
 				display: flex;
 				flex-direction: row;
+				line-height: 58rpx;
 
-				.reply-img {
-					margin-left: 20rpx;
-					height: 35rpx;
-					width: 35rpx;
+				.reply-items {
+					display: flex;
+					flex-direction: row;
+
+					.reply-img {
+						margin-left: 15rpx;
+						height: 43rpx;
+						width: 43rpx;
+
+					}
+
+					.reply-count {
+						margin-left: 15rpx;
+						font-size:24rpx;
+						font-weight: 100;
+						
+						align-items: center;
+						text-align: center;
+					}
 
 				}
 
-				.reply-count {
-					margin-left: 10rpx;
-					height: 35rpx;
-					font-weight: 100;
+				.wechat-share {
+					height: 45rpx;
+					width: 45rpx;
+					margin-right: 15rpx;
+					background-size: 43rpx 43rpx;
+					background-repeat: no-repeat;
+					background-image: url(~@/static/share.png);
+					border: none;
+				}
+
+				button::after {
+					border: none;
 				}
 			}
 
-			.wechat-share {
-				height: 45rpx;
-				width: 45rpx;
-				margin-right: 10rpx;
-				background-size: 35rpx 35rpx;
-				background-repeat: no-repeat;
-				background-image: url(~@/static/share.png);
-				border: none;
-			}
 
-			button::after {
-				border: none;
+
+			.line {
+				/* margin-top:5rpx; */
+				border-bottom: solid 1rpx #CCC;
 			}
 
 		}

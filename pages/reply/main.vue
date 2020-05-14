@@ -309,6 +309,7 @@
 									display:flex;
 									flex-direction:row;
 								.reply-info-user-group-username{
+									font-size: $userName-font-size;
 								}
 								
 								.reply-info-user-group-louzhu{

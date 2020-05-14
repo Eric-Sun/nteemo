@@ -3,13 +3,6 @@
 		<!-- #ifdef APP-PLUS -->
 		<uni-nav-bar title="首页"  status-bar="false" fixed="true"></uni-nav-bar>
 		<!-- #endif-->
-		<login :visible='visible' v-on:modalClose='closeModalEvent'></login>
-		<!-- <div class='header'> -->
-			<!-- <div data-tab='story' :data-offset='0'>故事贴 -->
-			<!-- </div> -->
-			<!--      <div :class='{ active: tab==="diary" }' @click.stop='changeTab($event)' data-tab='diary' :data-offset='1'>一日一记-->
-			<!--      </div>-->
-		<!-- </div> -->
 		<div class="containers" :animation='animation'>
 			<scroll-view scroll-y class='scroll-container' @scroll='onScroll($event)' @scrolltolower='getMore' :scroll-top="cursor">
 				<div v-for='item in data' :key='item.id'>
@@ -52,7 +45,6 @@
 				data: [],
 				isLoading: false,
 				animation: {},
-				visible: false,
 				cursor: 0,
 				userToken:''
 			}
@@ -101,12 +93,6 @@
 				this.cursor = 0;
 				this.page = 0;
 			},
-			closeModalEvent() {
-				this.visible = false
-				this.t = uni.getStorageSync('t')
-				this.getData(0)
-			},
-
 			getData(page) {
 				var type = -1
 				uni.showLoading({
@@ -186,7 +172,6 @@
 	.container {
 		background-color: rgb(245, 245, 249);
 		font-size: 30rpx;
-		overflow: hidden;
 		width: 100vw;
 
 		.up-png {
@@ -195,19 +180,6 @@
 			right: 30rpx;
 			bottom: 166rpx;
 			position: fixed;
-		}
-
-		.header {
-			display: flex;
-
-			&>div {
-				width: 20%;
-				/*background-color: #41b883;*/
-				color: black;
-				text-align: center;
-				height: 86rpx;
-				line-height: 86rpx;
-			}
 		}
 
 		.containers {

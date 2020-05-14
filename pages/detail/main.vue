@@ -35,7 +35,8 @@
 							<img v-if="detailData.anonymous==0" class='head-img' :src='item.userAvatarUrl' @click.stop='goAuthorPage' />
 							<img v-if="detailData.anonymous==1" class='head-img' :src='item.userAvatarUrl' />
 						</div>
-						<div class="reply-info">
+						<div class="reply-info"  :data-username="item.userName" :data-replyid='item.replyId' :data-anonymous="detailData.anonymous"
+									 @click.stop="showReplyModal($event)">
 							<div class="reply-info-user-info">
 								<div class="reply-info-user-info-fullname">
 									<span>{{item.userName}} </span>
@@ -69,12 +70,12 @@
 							</div>
 							<!--              <img class='up-png' src="/static/go-bottom.png" mode='widthFix' @click.stop="goBottom">-->
 
-							<div class="reply-foot">
+							<!-- <div class="reply-foot">
 								<div class="action">
 									<img class="item" :data-username="item.userName" :data-replyid='item.replyId' :data-anonymous="detailData.anonymous"
 									 @click.stop="showReplyModal($event)" src="../../static/comment.png" />
 								</div>
-							</div>
+							</div> -->
 							<div class="reply-divide"></div>
 						</div>
 					</div>
@@ -463,14 +464,14 @@
 
 			},
 			replySuccess() {
+				var that = this;
 				this.closeModal()
 				uni.showToast({
 					title: '评论成功',
 					icon: 'none',
-					duration: 1500
-
+					duration: 1000,
 				})
-				this.getReplyData(this.pageNum)
+				that.getReplyData(that.pageNum)
 			},
 			closeModal() {
 				this.sendVisible = false
@@ -700,7 +701,7 @@
 						text-align: justify;
 						text-justify: inter-ideograph;
 						font-weight: normal;
-						margin-top: 10rpx;
+						margin-top: 20rpx;
 						font-size: $content-font-size;
 					}
 
@@ -729,7 +730,7 @@
 					.reply-divide {
 						border-bottom: 1px solid #ccc;
 						margin-bottom: 10rpx;
-						margin-top: 10rpx;
+						margin-top: 20rpx;
 						margin-right: 20rpx;
 					}
 

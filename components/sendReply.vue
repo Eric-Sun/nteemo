@@ -48,10 +48,6 @@
 				default: '',
 				type: String
 			},
-			content: {
-				default: '',
-				type: String
-			},
 			// 帖子本身是否是匿名帖子
 			postAnonymous: {
 				default: '0',
@@ -61,20 +57,19 @@
 			isPostUserId: {
 				default: false,
 				type: Boolean
-			},
-			imgList: {
-				default: [],
-				type: Array
 			}
 
 		},
-		data: function() {
+		data() {
 			return {
 				anon: {
 					pickerData: ['非匿名', '匿名'],
 					index: -1,
-					replyAnonymous: 1 //此评论是否是匿名评论，默认为匿名
-				}
+					replyAnonymous: 1 ,//此评论是否是匿名评论，默认为匿名
+				
+				},
+				imgList:[],
+				content:""
 			}
 		},
 		methods: {
@@ -143,6 +138,14 @@
 				for (var i = 0; i < this.imgList.length; i++) {
 					imgIdList.push(this.imgList[i].imgId)
 				}
+				
+				uni.showToast({
+					title: '正在回复',
+					icon: 'none',
+					duration: 2000
+				})
+				
+				
 				this.$http({
 						act: 'reply.add',
 						t: t,
@@ -154,6 +157,7 @@
 						imgListStr: JSON.stringify(imgIdList)
 					},
 					function(res) {
+						uni.hideToast();
 						if (!res.data.code) {
 							that.content = ''
 							that.$emit('reply-success')
