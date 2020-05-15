@@ -9,10 +9,10 @@
 				<!--        <span class='time'>{{formatCreateAt}}</span>-->
 			</div>
 			<div v-if="item.star==1" class="title-star">【精华帖子】</div>
-			<span v-if="!hidden" class="top">
+			<span class="top">
 				<img class="ellipsis" src="@/static/ellipsis.png" :data-postid="item.postId" @click.stop="loadActions($event)" />
 			</span>
-			<span v-if="new_notice==0&&hidden" class="top-xin">
+			<span v-if="new_notice==0" class="top-xin">
 				新
 			</span>
 			<!--      <span v-if="hidden" class="top">楼主有新的回复</span>-->
@@ -25,7 +25,7 @@
 				<img class="img" :src="img.url" @click.stop="previewImg(index)">
 			</div>
 		</div>
-		<div v-if="!hidden" class='foot'>
+		<div  class='foot'>
 			<div class="foot-icons">
 				<div class="reply-items" @click.stop="goDetail($event)">
 					<img class="reply-img" src="@/static/comment.png" />
@@ -33,7 +33,7 @@
 				</div>
 				<button class="wechat-share" open-type="share" plain="true" />
 			</div>
-			<div class="line"></div>
+			<div class="line"> </div>
 		</div>
 	</div>
 
@@ -50,11 +50,6 @@
 	export default {
 		props: {
 			item: Object,
-			hidden: {
-				// 个人中心展示帖子隐藏一部分东西的复用
-				default: false,
-				type: Boolean
-			},
 			new_notice: {
 				default: 1,
 				type: Number
@@ -306,16 +301,13 @@
 					border: none;
 				}
 
-				button::after {
-					border: none;
-				}
 			}
 
 
 
 			.line {
 				/* margin-top:5rpx; */
-				border-bottom: solid 1rpx #CCC;
+				border: solid 1rpx #CCC;
 			}
 
 		}

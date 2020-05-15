@@ -53,6 +53,10 @@
 				default: '0',
 				type: String
 			},
+			rawContent: {
+				default: "",
+				type: String
+			},
 			// 用户是否是发帖用户
 			isPostUserId: {
 				default: false,
@@ -60,16 +64,22 @@
 			}
 
 		},
+		watch: {
+			rawContent: function(val,oldVal) {
+				console.log("fdafdsafdsa")
+				this.content = this.rawContent
+			}
+		},
 		data() {
 			return {
 				anon: {
 					pickerData: ['非匿名', '匿名'],
 					index: -1,
-					replyAnonymous: 1 ,//此评论是否是匿名评论，默认为匿名
-				
+					replyAnonymous: 1, //此评论是否是匿名评论，默认为匿名
+
 				},
-				imgList:[],
-				content:""
+				imgList: [],
+				content: ""
 			}
 		},
 		methods: {
@@ -126,6 +136,7 @@
 			},
 			async send() {
 				var that = this
+				console.log("---rawContent="+this.rawContent)
 				const t = uni.getStorageSync('t')
 				var pureContent = ''
 				if (this.replyId != 0) {
@@ -134,18 +145,19 @@
 				} else {
 					pureContent = this.content
 				}
+				console.log("count=" + count);
 				var imgIdList = [];
 				for (var i = 0; i < this.imgList.length; i++) {
 					imgIdList.push(this.imgList[i].imgId)
 				}
-				
+
 				uni.showToast({
 					title: '正在回复',
 					icon: 'none',
 					duration: 2000
 				})
-				
-				
+
+
 				this.$http({
 						act: 'reply.add',
 						t: t,
@@ -168,7 +180,8 @@
 								duration: 2000
 							})
 						}
-					},function(){},[6]
+					},
+					function() {}, [6]
 				)
 				this.imgList = []
 			},
@@ -224,7 +237,7 @@
 
 				.text {
 					/* border: 1rpx solid $borderColor; */
-					margin:10rpx;
+					margin: 10rpx;
 					margin: 10rpx;
 					height: 80vh;
 

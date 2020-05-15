@@ -5,8 +5,8 @@
 		<!-- #endif-->
 		<img v-if="isShare==1" @click.stop='backHome' class='d-back-home' src='http://cdn.xcx.pemarket.com.cn/icon-Return%20to%20the%20home%20page.png'>
 		<!-- <loginTips></loginTips> -->
-		<sendReply v-if='sendVisible' @close-modal='closeModal' @reply-success='replySuccess' :content='content' :postId='id'
-		 :replyId='replyId' :isPostUserId='isPostUserId' :postAnonymous='postAnonymous' :replyUserName='replyUserName'></sendReply>
+		<sendReply  v-if='sendVisible'  @close-modal='closeModal' @reply-success='replySuccess'  :postId='id'
+		 :replyId='replyId' :isPostUserId='isPostUserId' :postAnonymous='postAnonymous' :rawContent="content" :replyUserName='replyUserName'></sendReply>
 		<div>
 			<div class='head'>
 				<img v-if="detailData.anonymous==0" class='head-img' :src='detailData.userAvatarUrl' @click.stop='goAuthorPage'>
@@ -35,7 +35,7 @@
 							<img v-if="detailData.anonymous==0" class='head-img' :src='item.userAvatarUrl' @click.stop='goAuthorPage' />
 							<img v-if="detailData.anonymous==1" class='head-img' :src='item.userAvatarUrl' />
 						</div>
-						<div class="reply-info"  :data-username="item.userName" :data-replyid='item.replyId' :data-anonymous="detailData.anonymous"
+						<div class="reply-info" :data-username="item.userName" :data-replyid='item.replyId' :data-anonymous="detailData.anonymous"
 									 @click.stop="showReplyModal($event)">
 							<div class="reply-info-user-info">
 								<div class="reply-info-user-info-fullname">
