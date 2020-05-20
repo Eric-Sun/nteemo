@@ -3,13 +3,13 @@
 		<!-- #ifdef APP-PLUS -->
 		<uni-nav-bar left-icon="back" fixed="true" @clickLeft="navigateBack" title="帖子详情" status-bar="false"></uni-nav-bar>
 		<!-- #endif-->
-		<img v-if="isShare==1" @click.stop='backHome' class='d-back-home' src='http://cdn.xcx.pemarket.com.cn/icon-Return%20to%20the%20home%20page.png'>
+		<img v-if="isShare==1" @click='backHome' class='d-back-home' src='http://cdn.xcx.pemarket.com.cn/icon-Return%20to%20the%20home%20page.png'>
 		<!-- <loginTips></loginTips> -->
 		<sendReply  v-if='sendVisible'  @close-modal='closeModal' @reply-success='replySuccess'  :postId='id'
-		 :replyId='replyId' :isPostUserId='isPostUserId' :postAnonymous='postAnonymous' :rawContent="content" :replyUserName='replyUserName'></sendReply>
+		 :replyId='replyId' :isPostUserId='isPostUserId' :postAnonymous='postAnonymous' :content="content" :replyUserName='replyUserName'></sendReply>
 		<div>
 			<div class='head'>
-				<img v-if="detailData.anonymous==0" class='head-img' :src='detailData.userAvatarUrl' @click.stop='goAuthorPage'>
+				<img v-if="detailData.anonymous==0" class='head-img' :src='detailData.userAvatarUrl' >
 				<img v-if="detailData.anonymous==1" class='head-img' :src='detailData.userAvatarUrl'>
 				<div class='info'>
 					<span>{{detailData.userName}}</span>
@@ -22,7 +22,7 @@
 				</div>
 				<div v-if="includePostContent==1" class='content'>{{detailData.content}}</div>
 				<div v-if="includePostContent==1" class="imgs" v-for="(img,imgIndex) in detailData.imgList">
-					<img class="img" :src="img.url" @click.stop="previewImg(imgIndex)">
+					<img class="img" :src="img.url" @click="previewImg(imgIndex)">
 				</div>
 
 				<div class='reply'>
@@ -32,11 +32,10 @@
 
 					<div class='reply-container' v-for='(item,originIndex) in formatReplies' :key='item.id' :data-id='item.id'>
 						<div class='reply-head'>
-							<img v-if="detailData.anonymous==0" class='head-img' :src='item.userAvatarUrl' @click.stop='goAuthorPage' />
+							<img v-if="detailData.anonymous==0" class='head-img' :src='item.userAvatarUrl'  />
 							<img v-if="detailData.anonymous==1" class='head-img' :src='item.userAvatarUrl' />
 						</div>
-						<div class="reply-info" :data-username="item.userName" :data-replyid='item.replyId' :data-anonymous="detailData.anonymous"
-									 @click.stop="showReplyModal($event)">
+						<div class="reply-info" >
 							<div class="reply-info-user-info">
 								<div class="reply-info-user-info-fullname">
 									<span>{{item.userName}} </span>
@@ -44,11 +43,12 @@
 								</div>
 								<span class="reply-info-user-info-loushu">{{(pageNum * reply_size_per_page) + 1 + originIndex}}楼</span>
 							</div>
-							<div class='reply-content'>{{item.content}}</div>
+							<div class='reply-content' :data-username="item.userName" :data-replyid='item.replyId' :data-anonymous="detailData.anonymous"
+									 @click="showReplyModal($event)">{{item.content}}</div>
 							<div v-if="item.imgList.length!=0">
 								<img class='reply-imgList' :src="item.imgList[0].url">
 							</div>
-							<div class="reply-replyList-div" @click.stop="navigateToReply" :data-replyid="item.replyId" :data-postid="id"
+							<div class="reply-replyList-div" @click="navigateToReply" :data-replyid="item.replyId" :data-postid="id"
 							 :data-anonymous="detailData.anonymous" v-if="item.replyList.length!=0">
 								<div class="reply-replyList" v-for="(innerItem,innerIndex) in item.replyList" :key='innerItem.replyId'>
 									<div class="reply-replyList-line">
@@ -64,7 +64,7 @@
 									</div>
 
 								</div>
-								<div class="reply-replyList-tips" v-if="item.replySize>1" @click.stop="navigateToReply($event)" :data-replyid="item.replyId"
+								<div class="reply-replyList-tips" v-if="item.replySize>1" @click="navigateToReply($event)" :data-replyid="item.replyId"
 								 :data-postid="id" :data-anonymous="detailData.anonymous">查看全部回复
 								</div>
 							</div>
@@ -85,11 +85,11 @@
 		<div class="controller">
 			<div class="pagination">
 				<div>
-					<img class="left-arrow" src="../../static/left-arrow.png" @click.stop="backPage()" />
+					<img class="left-arrow" src="../../static/left-arrow.png" @click="backPage()" />
 				</div>
 				<div class="pagination-info">{{pageNum+1}}/{{culculatePageNum}}页</div>
 				<div>
-					<img class="right-arrow" src="../../static/right-arrow.png" @click.stop="goPage()" />
+					<img class="right-arrow" src="../../static/right-arrow.png" @click="goPage()" />
 				</div>
 			</div>
 			<div class="actions">
@@ -442,6 +442,7 @@
 						})
 					},
 					function() {
+						that.content =""
 						var userId = uni.getStorageSync('userId')
 						var userName = e.currentTarget.dataset.username
 						var replyId = e.currentTarget.dataset.replyid
@@ -549,6 +550,8 @@
 			background-color: white;
 			display: flex;
 			align-items: center;
+			padding-top:20rpx;
+			padding-bottom:20rpx;
 
 			.head-img {
 				border-radius: 45rpx;

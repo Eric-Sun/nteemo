@@ -55,7 +55,7 @@
 			login,
 			uniNavBar
 		},
-		onShow() {
+		onLoad() {
 			// 为了测试
 			// uni.setStorageSync("t",1586763893677)
 			

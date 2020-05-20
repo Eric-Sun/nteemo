@@ -23,6 +23,7 @@
 				</div>
 
 				<div class="body">
+					<div class="tips">回复</div>
 					<div class='reply'>
 						<div class='reply-container-with-divide' v-for='(item,originindex) in reply.replyList' :key='item.id' :data-id='item.id'>
 							<div class="reply-container">
@@ -35,7 +36,7 @@
 										<span class="reply-info-user-group-username">{{item.userName}}</span>
 										<span v-if="postUserId==item.userId" class="reply-info-user-group-louzhu">楼主</span>
 									</div>
-									<div class='reply-content'>
+									<div class='reply-content' :data-username="item.userName" :data-replyid='item.replyId' @click.stop="showReplyModal($event)">
 										{{item.lastReplyId!=reply.replyId?
                     '回复@'+item.lastReplyUserName+':'+item.content:item.content}}
 									</div>
@@ -46,10 +47,7 @@
 										<!--                    <div class="time">-->
 										<!--                      {{formatCreateAt}}-->
 										<!--                    </div>-->
-										<div class="action">
-											<img class="item" :data-username="item.userName" :data-replyid='item.replyId' @click.stop="showReplyModal($event)"
-											 src="../../static/comment.png" />
-										</div>
+		
 									</div>
 								</div>
 							</div>
@@ -203,7 +201,7 @@
 <style lang='scss' scoped>
 	.container {
 		/*height: 100vh;*/
-		height: 90vh;
+		height: 100vh;
 		width: 100vw;
 		margin-top:20rpx;
 		background-color: rgb(245, 245, 239);
@@ -211,7 +209,8 @@
 		.head {
 			background-color: white;
 			display: flex;
-			padding-left: 10rpx;
+			padding-left: 20rpx;
+			padding-top:20rpx;
 
 			/*align-items: center;*/
 			.head-img {
@@ -260,6 +259,11 @@
 			padding: 15rpx;
 			background-color: rgb(245, 245, 239);
 
+			.tips{
+				font-size:33rpx;
+				padding-left:30rpx;
+				padding-bottom: 15rpx;
+			}
 			.title {
 				/*background-color: white;*/
 				padding-left: 30rpx;
@@ -270,16 +274,7 @@
 			}
 
 			.reply {
-				background-color: white;
-
-				.reply-title {
-					font-size: 25rpx;
-					margin-bottom: 20rpx;
-					margin-left: 25rpx;
-					font-weight: lighter;
-
-				}
-
+				/* background-color: white; */
 				.reply-container-with-divide {
 					display: flex;
 					flex-direction: column;
@@ -327,6 +322,8 @@
 							}
 
 							.reply-content {
+								padding-top:15rpx;
+								padding-bottom:15rpx;
 								width: 100%;
 								/*white-space: pre-line;*/
 								text-align: justify;

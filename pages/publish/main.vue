@@ -199,6 +199,7 @@
 			var that = this;
 			this.t = uni.getStorageSync("t");
 			this.imgList=[];
+			
 			checkT(this, this.t,
 				function() {
 					uni.showModal({

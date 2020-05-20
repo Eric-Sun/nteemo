@@ -11,7 +11,7 @@
 				<label class="button" @click.stop="send">提交</label>
 			</div>
 			<div class="inputText">
-				<textarea class='text' focus="true" v-model="content" placeholder-style="color: #BABABA;" placeholder="说点什么吧"></textarea>
+				<textarea class='text' focus="false" v-model="content" placeholder-style="color: #BABABA;" placeholder="说点什么吧"></textarea>
 			</div>
 
 			<!--      <div class="help-block">上传图片(建议图片格式为：JPEG/BMP/PNG/GIF，大小不超过5M，最多可上传9张)</div>-->
@@ -41,8 +41,8 @@
 		props: {
 			postId: 0,
 			replyId: {
-				default: '',
-				type: String
+				default: 0,
+				type: Number
 			},
 			replyUserName: {
 				default: '',
@@ -50,10 +50,10 @@
 			},
 			// 帖子本身是否是匿名帖子
 			postAnonymous: {
-				default: '0',
-				type: String
+				default: 0,
+				type: Number
 			},
-			rawContent: {
+			content: {
 				default: "",
 				type: String
 			},
@@ -65,10 +65,7 @@
 
 		},
 		watch: {
-			rawContent: function(val,oldVal) {
-				console.log("fdafdsafdsa")
-				this.content = this.rawContent
-			}
+		
 		},
 		data() {
 			return {
@@ -136,7 +133,7 @@
 			},
 			async send() {
 				var that = this
-				console.log("---rawContent="+this.rawContent)
+				console.log("content="+this.content)
 				const t = uni.getStorageSync('t')
 				var pureContent = ''
 				if (this.replyId != 0) {

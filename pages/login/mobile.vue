@@ -51,12 +51,15 @@
 					console.log("mobile login suc. t=" + res.data.t + " userId=" + res.data.userId)
 					uni.setStorageSync('t', res.data.t);
 					uni.setStorageSync('userId', res.data.userId)
+					setTimeout(function(){
+						uni.navigateBack({
+						})
+					},1500)
 					uni.showToast({
 						title: "登录成功",
-						duration: 1000,
+						duration: 1500,
 						complete: function() {
-							uni.navigateBack({
-							})
+						
 						}
 					})
 				});
