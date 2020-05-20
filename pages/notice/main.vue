@@ -94,9 +94,18 @@
 						confirmText: "去登陆",
 						success: function(res) {
 							if (res.confirm) {
+								
+								//#ifndef APP-PLUS
 								uni.navigateTo({
 									url: "../login/main"
 								})
+								//#endif
+								
+								//#ifdef APP_PLUS
+								uni.navigateTo({
+									url: "../login/mobile"
+								})
+								//#endif
 							} else if (res.cancel) {}
 						}
 					})

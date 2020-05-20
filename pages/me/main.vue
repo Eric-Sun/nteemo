@@ -46,9 +46,17 @@
 				uni.setStorageSync('fromItem', e.target.dataset.item)
 			},
 			login() {
+				//#ifndef APP-PLUS
 				uni.navigateTo({
-					url:"../login/main"
+					url: "../login/main"
 				})
+				//#endif
+				
+				//#ifdef APP_PLUS
+				uni.navigateTo({
+					url: "../login/mobile"
+				})
+				//#endif
 			},
 			async getData() {
 				const t = uni.getStorageSync('t')
