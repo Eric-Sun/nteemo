@@ -307,7 +307,7 @@
 
 			.line {
 				/* margin-top:5rpx; */
-				border: solid 1rpx #CCC;
+				border-bottom: solid 1rpx #C5C5C5;
 			}
 
 		}
