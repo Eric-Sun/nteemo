@@ -1,13 +1,11 @@
 <template>
 	<div class='header'>
-		<img :src='user&&user.avatarUrl' class='img'>
-		<button @click="toModifyPage">编辑资料</button>
-		<span class='span'>{{user&&user.nickName}}</span>
-
-
+		<img v-if='user.avatarUrl!=undefined' :src='user&&user.avatarUrl' class='img'>
 		<img v-if='user.avatarUrl==undefined' src='https://20190305test.oss-cn-beijing.aliyuncs.com/no_user.jpg' class='img'
 		 @click.stop="login">
 		<span v-if='user.avatarUrl==undefined' class='span' @click.stop="login">未登录</span>
+		<span class='span'>{{user&&user.nickName}}</span>
+		
 	</div>
 </template>
 <script>
@@ -27,9 +25,6 @@
 		methods: {
 			login: function() {
 				this.$emit("login")
-			},
-			toModifyPage:function(){
-				this.$emit("toModifyPage")
 			}
 		}
 	}
@@ -52,7 +47,8 @@
 		}
 
 		.span {
-			margin-top: 20rpx;
+			margin-top: 30rpx;
+			padding-bottom:30rpx;
 		}
 	}
 </style>

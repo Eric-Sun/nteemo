@@ -1,9 +1,9 @@
 <template>
 	<div class="container">
 		<!-- #ifdef APP-PLUS -->
-		<uni-nav-bar title="我的页面" fixed="true" status-bar="false"></uni-nav-bar>
+		<uni-nav-bar title="我的页面" fixed="true" status-bar="false" rightText="编辑资料" @clickRight="toModifyPage"></uni-nav-bar>
 		<!-- #endif-->
-		<authorHead :user='user' v-on:login='login' v-on:toModifyPage="toModifyPage"></authorHead>
+		<authorHead :user='user' v-on:login='login' ></authorHead>
 		<div class='list'>
 			<!--<navigator class='list-item' @click.stop='setListFrom' url='/pages/list/main?type=collect' data-item='collect'>我的收藏</navigator>-->
 			<!-- <navigator class='list-item' @click.stop='setListFrom' url='/pages/list/main?type=topic' data-item='topic'>最近话题</navigator> -->
@@ -38,9 +38,35 @@
 		},
 		methods: {
 			toModifyPage() {
-				uni.navigateTo({
-					url: `modify`
-				})
+				checkT(this, this.t,
+					function() {
+						uni.showModal({
+							title: "登陆",
+							content: "需要登陆后才可以进行发布",
+							confirmText: "去登陆",
+							success: function(res) {
+								if (res.confirm) {
+									// that.loginVisible = true;
+									//#ifndef APP-PLUS 
+									uni.navigateTo({
+										url: "../login/main"
+									})
+									//#endif
+									
+									//#ifdef APP_PLUS
+									uni.navigateTo({
+										url: "../login/mobile"
+									})
+									//#endif
+								} else if (res.cancel) {}
+							}
+						})
+					},
+					function() {
+						uni.navigateTo({
+							url: `modify`
+						})
+					});
 			},
 			setListFrom(e) {
 				uni.setStorageSync('fromItem', e.target.dataset.item)
@@ -67,9 +93,6 @@
 				}, function(res) {
 					that.user = res.data
 				})
-			},
-			cancelModalClose: function() {
-				this.loginVisible = false
 			}
 		},
 		onShow() {

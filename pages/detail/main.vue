@@ -1,15 +1,15 @@
 <template>
-	<div class='container'>
+	<div class='container' @touchmove="handletouchmove" @touchstart="handletouchstart">
 		<!-- #ifdef APP-PLUS -->
 		<uni-nav-bar left-icon="back" fixed="true" @clickLeft="navigateBack" title="帖子详情" status-bar="false"></uni-nav-bar>
 		<!-- #endif-->
 		<img v-if="isShare==1" @click='backHome' class='d-back-home' src='http://cdn.xcx.pemarket.com.cn/icon-Return%20to%20the%20home%20page.png'>
 		<!-- <loginTips></loginTips> -->
-		<sendReply  v-if='sendVisible'  @close-modal='closeModal' @reply-success='replySuccess'  :postId='id'
-		 :replyId='replyId' :isPostUserId='isPostUserId' :postAnonymous='postAnonymous' :content="content" :replyUserName='replyUserName'></sendReply>
+		<sendReply v-if='sendVisible' @close-modal='closeModal' @reply-success='replySuccess' :postId='id' :replyId='replyId'
+		 :isPostUserId='isPostUserId' :postAnonymous='postAnonymous' :content="content" :replyUserName='replyUserName'></sendReply>
 		<div>
 			<div class='head'>
-				<img v-if="detailData.anonymous==0" class='head-img' :src='detailData.userAvatarUrl' >
+				<img v-if="detailData.anonymous==0" class='head-img' :src='detailData.userAvatarUrl'>
 				<img v-if="detailData.anonymous==1" class='head-img' :src='detailData.userAvatarUrl'>
 				<div class='info'>
 					<span>{{detailData.userName}}</span>
@@ -32,10 +32,10 @@
 
 					<div class='reply-container' v-for='(item,originIndex) in formatReplies' :key='item.id' :data-id='item.id'>
 						<div class='reply-head'>
-							<img v-if="detailData.anonymous==0" class='head-img' :src='item.userAvatarUrl'  />
+							<img v-if="detailData.anonymous==0" class='head-img' :src='item.userAvatarUrl' />
 							<img v-if="detailData.anonymous==1" class='head-img' :src='item.userAvatarUrl' />
 						</div>
-						<div class="reply-info" >
+						<div class="reply-info">
 							<div class="reply-info-user-info">
 								<div class="reply-info-user-info-fullname">
 									<span>{{item.userName}} </span>
@@ -44,7 +44,7 @@
 								<span class="reply-info-user-info-loushu">{{(pageNum * reply_size_per_page) + 1 + originIndex}}楼</span>
 							</div>
 							<div class='reply-content' :data-username="item.userName" :data-replyid='item.replyId' :data-anonymous="detailData.anonymous"
-									 @click="showReplyModal($event)">{{item.content}}</div>
+							 @click="showReplyModal($event)">{{item.content}}</div>
 							<div v-if="item.imgList.length!=0">
 								<img class='reply-imgList' :src="item.imgList[0].url">
 							</div>
@@ -293,7 +293,7 @@
 									url: "../login/main"
 								})
 								//#endif
-								
+
 								//#ifdef APP_PLUS
 								uni.navigateTo({
 									url: "../login/mobile"
@@ -344,10 +344,10 @@
 				var postId = e.currentTarget.dataset.postid
 				var anonymous = e.currentTarget.dataset.anonymous
 				var postUserId = this.detailData.userId
-				
-				console.log("replyId"+replyId);
-				console.log("postId"+postId);
-				console.log("postUserId"+postUserId);
+
+				console.log("replyId" + replyId);
+				console.log("postId" + postId);
+				console.log("postUserId" + postUserId);
 
 				uni.navigateTo({
 					url: `../reply/main?replyId=${replyId}&postId=${postId}&anonymous=${anonymous}&postUserId=${postUserId}`
@@ -431,7 +431,7 @@
 										url: "../login/main"
 									})
 									//#endif
-									
+
 									//#ifdef APP_PLUS
 									uni.navigateTo({
 										url: "../login/mobile"
@@ -442,7 +442,7 @@
 						})
 					},
 					function() {
-						that.content =""
+						that.content = ""
 						var userId = uni.getStorageSync('userId')
 						var userName = e.currentTarget.dataset.username
 						var replyId = e.currentTarget.dataset.replyid
@@ -476,7 +476,23 @@
 			},
 			closeModal() {
 				this.sendVisible = false
-			}
+			},
+			handletouchmove: function(event) {
+				let currentX = event.touches[0].pageX;
+				let tx = currentX - this.lastX;
+				console.log("tx="+tx)
+				if (tx > 50) {
+					this.navigateBack();
+					//  this.getList();  //调用列表的方法
+				}
+				if(tx<-50){
+					// 看下一个内容
+				}
+			},
+			handletouchstart: function(event) {
+				// console.log(event)
+				this.lastX = event.touches[0].pageX;
+ 			}
 		},
 		onLoad(option) {
 			this.id = option.postId
@@ -535,8 +551,9 @@
 				cursor: -1,
 				reply_size_per_page: 0,
 				cursorTmp: 0,
-				userToken: ''
-			}
+				userToken: '',
+				// 左右滑动的坐标
+				lastX: 0			}
 		}
 	}
 </script>
@@ -550,8 +567,8 @@
 			background-color: white;
 			display: flex;
 			align-items: center;
-			padding-top:20rpx;
-			padding-bottom:20rpx;
+			padding-top: 20rpx;
+			padding-bottom: 20rpx;
 
 			.head-img {
 				border-radius: 45rpx;
