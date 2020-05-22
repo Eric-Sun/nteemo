@@ -307,6 +307,7 @@
 
 			.line {
 				/* margin-top:5rpx; */
+				height: 1rpx;
 				border-bottom: solid 1rpx #C5C5C5;
 			}
 

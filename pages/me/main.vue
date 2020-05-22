@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<!-- #ifdef APP-PLUS -->
-		<uni-nav-bar title="我的页面" fixed="true" status-bar="false" rightText="编辑资料" @clickRight="toModifyPage"></uni-nav-bar>
+		<uni-nav-bar title="我的页面" fixed="true" status-bar="false" ></uni-nav-bar>
 		<!-- #endif-->
 		<authorHead :user='user' v-on:login='login' ></authorHead>
 		<div class='list'>
@@ -28,7 +28,7 @@
 	export default {
 		data() {
 			return {
-				
+				t:"",
 				user: {}
 			}
 		},
@@ -97,8 +97,8 @@
 		},
 		onShow() {
 			var that = this
-			var t = uni.getStorageSync("t")
-			checkT(this,t,
+			this.t = uni.getStorageSync("t")
+			checkT(this,this.t,
 				function() {
 					// that.loginVisible = true
 				},

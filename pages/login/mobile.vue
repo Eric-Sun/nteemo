@@ -9,10 +9,10 @@
 			<input class="messageCode" placeholder="请输入验证码" v-model="messageCode"></input>
 			<div class="tips" :disabled="disabled" @click.stop="getMessageCode">{{messageCodeTips}}</div>
 		</div>
-		<div class="loginBtnDisable" v-show="messageCode.length==0||mobile.length==0">
+		<div class="loginBtnDisable" v-if="messageCode.length==0||   mobile.length==0">
 			<div class="login-word">登陆</div>
 		</div>
-		<div class="loginBtn" v-show="messageCode.length!=0&& mobile.length!=0" @click="mobileLogin">
+		<div class="loginBtn" v-if="messageCode.length!=0&& mobile.length!=0" @click="mobileLogin">
 			<div class="login-word" >登陆</div>
 		</div>
 	</view>
