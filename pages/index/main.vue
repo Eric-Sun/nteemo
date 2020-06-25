@@ -109,6 +109,7 @@
 						userToken:this.userToken
 					},
 					function(res) {
+						uni.hideLoading()
 						console.log(res.data.list[0]);
 						if (res.data.list.length != 0) {
 							if (that.data.length > 0 && page === 0) {
@@ -133,10 +134,10 @@
 								text: res.data.noticeSize + ''
 							})
 						}
-
+		
 					}
 				)
-				uni.hideLoading()
+		
 				this.isLoading = false
 			},
 			async getMore() {

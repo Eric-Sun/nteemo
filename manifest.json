@@ -81,5 +81,10 @@
     "h5" : {
         "title" : "豆子社区",
         "domain" : "www.cosydesign.cn"
+    },
+    "mp-qq" : {
+        "setting" : {
+            "minified" : false
+        }
     }
 }

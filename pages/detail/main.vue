@@ -283,7 +283,7 @@
 				} else {
 					uni.showModal({
 						title: "登陆",
-						content: "需要登陆后才可以进行发布",
+						content: "需要登陆后才可以进行收藏",
 						confirmText: "去登陆",
 						success: function(res) {
 							if (res.confirm) {
@@ -421,7 +421,7 @@
 					function() {
 						uni.showModal({
 							title: "登陆",
-							content: "需要登陆后才可以进行发布",
+							content: "需要登陆后才可以进行回复",
 							confirmText: "去登陆",
 							success: function(res) {
 								if (res.confirm) {
