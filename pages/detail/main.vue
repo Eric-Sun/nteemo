@@ -123,7 +123,7 @@
 
 
 	const debounceOnScroll = () => debounce(function(e) {
-		this.cursor = e.target.scrollTop
+		// this.cursor = e.target.scrollTop
 		// this.cursor = 0;
 	})
 	export default {
@@ -207,7 +207,7 @@
 			},
 			// 点击右箭头，往前进一个页面
 			goPage() {
-				if (this.pageNum == this.culculatePageNum) {
+				if (this.pageNum +1 == this.culculatePageNum) {
 					return;
 				} else if (this.pageNum == 0) {
 					this.includePostContent = 0;
@@ -383,6 +383,7 @@
 					title: '加载中'
 				})
 				var that = this;
+				that.currentReplies=[];
 				this.$http({
 					act: this.requestAction,
 					pageNum: pageNum, //当等于-1的是从cursor位置读取相关的pageNum，当不等于-1的时候则强行获取该pageNum的数据
