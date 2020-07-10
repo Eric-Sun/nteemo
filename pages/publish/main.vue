@@ -16,7 +16,7 @@
 		<textarea v-show="tab==='markdown'" maxlength="-1" placeholder-style="color: #BABABA;" class='textarea' placeholder="静静写出来你想说的"
 		 v-model="content"></textarea>
 		<!-- <div class="help-block">上传图片(建议图片格式为：JPEG/BMP/PNG/GIF，大小不超过5M，最多可上传9张)</div> -->
-		<lu class="upload-imgs">
+		<!-- <lu class="upload-imgs">
 			<li v-if="imgList.length>=9 ? false : true">
 				<input type="file" class="upload" @click="uploadImg()" ref="inputer" />
 				<a class="add"><i class="iconfont icon-plus"></i>
@@ -27,7 +27,7 @@
 				<p class="img"><img :src="img.url"><a class="close" @click="delImg(index)">x</a>
 				</p>
 			</li>
-		</lu>
+		</lu> -->
 		<button @click.stop="handle">发帖</button>
 	</div>
 </template>

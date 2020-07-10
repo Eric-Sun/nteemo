@@ -13,6 +13,12 @@
 			}
 		},
 		{
+			"path": "pages/publishedList/main",
+			"style": {
+				"navigationBarTitleText": "已发布"
+			}
+		},
+		{
 			"path": "pages/notice/main",
 			"style": {
 				"navigationBarTitleText": "通知"

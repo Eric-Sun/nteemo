@@ -164,9 +164,9 @@
 			justify-content: center;
 			align-items: center;
 			font-size: 35rpx;
-			padding-top: 400rpx;
-			padding-bottom: 650rpx;
-			color: #C0C0C0
+			color: #C0C0C0;
+			width: 100vw;
+			height: 100vh;
 		}
 
 		.notice {

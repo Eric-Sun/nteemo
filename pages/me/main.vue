@@ -8,6 +8,10 @@
 			<!--<navigator class='list-item' @click.stop='setListFrom' url='/pages/list/main?type=collect' data-item='collect'>我的收藏</navigator>-->
 			<!-- <navigator class='list-item' @click.stop='setListFrom' url='/pages/list/main?type=topic' data-item='topic'>最近话题</navigator> -->
 			<navigator class='list-item' url='/pages/collection/main'>我的收藏</navigator>
+			<navigator class='list-item' url='/pages/publishedList/main'>我已发布</navigator>
+			
+			<div class="list-item" @click="contactUs">联系我们</div>
+			<div class="list-item-red" @click="logout">退出登陆</div>
 			<!-- #ifndef APP-PLUS -->
 			<button open-type='feedback'>意见反馈</button>
 			<!-- #endif -->
@@ -93,6 +97,18 @@
 				}, function(res) {
 					that.user = res.data
 				})
+			},
+			contactUs(){
+				uni.showToast({
+					icon:"none",
+				    title: '联系开发哥哥，请加QQ群：696945969',
+				    duration: 2000
+				});
+			}
+			,
+			logout(){
+				uni.setStorageSync("t",0);
+				this.user={};
 			}
 		},
 		onShow() {
@@ -120,15 +136,23 @@
 			background-color: white;
 
 			.list-item {
+				text-align: center;
 				height: 76rpx;
 				line-height: 76rpx;
 				margin: 0 30rpx;
 				padding: 10rpx 0;
 			}
-
-			.list-item+.list-item {
-				border-top: 1rpx solid $borderColor;
+			.list-item-red {
+				text-align: center;
+				height: 76rpx;
+				line-height: 76rpx;
+				margin: 0 30rpx;
+				padding: 10rpx 0;
+				
+				color:red;
 			}
+
+			
 
 			.margin {
 				margin-top: 30rpx;

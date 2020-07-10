@@ -18,12 +18,20 @@
 			<!--      <span v-if="hidden" class="top">楼主有新的回复</span>-->
 		</div>
 		<div class='body' @click.stop="goDetail($event)">
+			<div class="topicList">
+				<div v-for='topic in item.topicList' :key='topic.id' class="topic">
+				#{{topic.name}}
+				</div>
+			</div>
+			
 			<div class="title">{{item.title}}</div>
 			<pre v-if="item.isContentLong==0">{{item.content}}</pre>
 			<pre v-if="item.isContentLong==1">{{item.content}}<span>查看全部</span></pre>
 			<div class="imgs" v-for="(img,index) in item.imgList">
 				<img class="img" :src="img.url" @click.stop="previewImg(index)">
 			</div>
+
+			
 		</div>
 		<div  class='foot'>
 			<div class="foot-icons">
@@ -256,6 +264,17 @@
 				font-weight: 900;
 				margin-bottom: 10rpx;
 
+			}
+			
+			.topicList{
+				display: flex;
+				flex-direction: row;
+				
+				.topic{
+					color:red;
+					width:200rpx;
+					background-color: green;
+				}
 			}
 		}
 
