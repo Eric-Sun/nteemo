@@ -6,12 +6,7 @@
 		<div class='list'>
 			<input class='input' type="text" placeholder-style="color: #BABABA;" placeholder="标题" v-model="title">
 		</div>
-		<!-- <picker class='picker' @change="bindPickerChange($event)" :value="type.index" :range="type.pickerData">
-			<span>类型:</span><span style='margin-left:200rpx;'>故事贴</span>
-		</picker> -->
-		<!--    <picker class='picker' @change="bindPickerChange1($event)" :value="anon.index" :range="anon.pickerData">-->
-		<!--      <span>匿名:</span><span style='margin-left:200rpx;'>{{anon.pickerData[anon.index]}}</span>-->
-		<!--    </picker>-->
+		<div class="line"></div>
 
 		<textarea v-show="tab==='markdown'" maxlength="-1" placeholder-style="color: #BABABA;" class='textarea' placeholder="静静写出来你想说的"
 		 v-model="content"></textarea>
@@ -28,7 +23,20 @@
 				</p>
 			</li>
 		</lu> -->
-		<button @click.stop="handle">发帖</button>
+		<div class="line"></div>
+		<div class="topicInfo">
+			<div class="topicLeft">
+				选择话题
+			</div>
+			<picker @change="bindTopicPickerChange" class="topicPicker" :value="index" :range="array">
+
+				<div>{{array[index]}}</div>
+			</picker>
+		</div>
+		<div class="line"></div>
+		<div class="btn-div">
+			<button class="btn" @click.stop="handle">发帖</button>
+		</div>
 	</div>
 </template>
 
@@ -55,23 +63,21 @@
 		},
 		data() {
 			return {
-				type: {
-					pickerData: ['故事贴'],
-					index: 1
-				},
-				anon: {
-					pickerData: ['非匿名', '匿名'],
-					index: 0
-				},
 				title: '',
 				content: '',
 				loginVisible: false,
 				tab: 'markdown', // or preview
 				t: '',
-				imgList: []
+				imgList: [],
+				array: ['中国', '美国', '巴西', '日本'],
+				index: 0
 			}
 		},
 		methods: {
+			bindTopicPickerChange(e) {
+				this.index = e.target.value
+			},
+
 			async uploadImg() {
 				var that = this;
 				uni.chooseImage({
@@ -150,20 +156,7 @@
 					imgIdList.push(this.imgList[i].imgId)
 				}
 				var that = this;
-				if (this.type.index == -1) {
-					uni.showToast({
-						title: '请选择类型',
-						icon: 'none',
-						duration: 2000
-					})
-				}
-				if (this.anon.index == -1) {
-					uni.showToast({
-						title: '请选择是否匿名',
-						icon: 'none',
-						duration: 2000
-					})
-				}
+				
 				this.$http({
 					act: 'post.add',
 					t: this.t,
@@ -171,8 +164,8 @@
 					title: this.title,
 					content: this.content,
 					imgList: JSON.stringify(imgIdList),
-					type: 0,
-					anonymous: this.anon.index
+					topicIdList: JSON.stringify([this.index]),
+					type: 0
 				}, function(res) {
 					if (!res.data.code) {
 						uni.showToast({
@@ -198,8 +191,8 @@
 		onShow() {
 			var that = this;
 			this.t = uni.getStorageSync("t");
-			this.imgList=[];
-			
+			this.imgList = [];
+
 			checkT(this, this.t,
 				function() {
 					uni.showModal({
@@ -214,7 +207,7 @@
 									url: "../login/main"
 								})
 								//#endif
-								
+
 								//#ifdef APP_PLUS
 								uni.navigateTo({
 									url: "../login/mobile"
@@ -227,6 +220,15 @@
 				function() {
 
 				});
+
+			this.$http({
+				act: 'topic.list',
+
+			}, function(res) {
+				that.array = res.data.data.map(function(v) {
+					return v.name
+				});
+			});
 		}
 	}
 </script>
@@ -234,8 +236,10 @@
 <style lang='scss' scoped>
 	.container {
 		height: 100vh;
-		width: 100%;
-		background-color: rgb(245, 245, 249);
+		/* width: 100%; */
+		background-color: white;
+		margin-left: 20rpx;
+		margin-right: 20rpx;
 
 
 
@@ -243,131 +247,66 @@
 			display: flex;
 			/*justify-content: space-between;*/
 			background-color: white;
-			margin-bottom: 30rpx;
-			height: 90rpx;
-			padding: 0 30rpx;
-			line-height: 90rpx;
+			margin-left: 20rpx;
+			margin-bottom: 10rpx;
 
-			.input {
-				height: 90rpx;
-				line-height: 90rpx;
-			}
+			.input {}
+		}
+
+		.line {
+			height: 1rpx;
+			border-bottom: solid 1rpx #C5C5C5;
 		}
 
 		.picker {
 			display: flex;
 			/*justify-content: space-between;*/
 			background-color: white;
-			margin-bottom: 30rpx;
 			height: 90rpx;
 			line-height: 90rpx;
-			padding: 0 30rpx;
-		}
-
-		.tabs {
-			display: flex;
-			background-color: white;
-
-			&>div {
-				width: 50%;
-				text-align: center;
-			}
 		}
 
 		.textarea {
 			width: 100%;
 			background-color: white;
-			margin-bottom: 30rpx;
 			height: 500rpx;
-			padding: 0 30rpx;
+			margin-top: 10rpx;
+			margin-left: 20rpx;
 			box-sizing: border-box;
+			margin-bottom: 10rpx;
 		}
-	}
 
-	.selected {
-		color: $color;
-		border-bottom: 2rpx solid $color;
-	}
+		.topicInfo {
+			margin-left: 20rpx;
+			margin-top: 20rpx;
+			display: flex;
+			flex-direction: row;
+			margin-bottom: 10rpx;
 
-	.upload-imgs {
-		margin: 10px 0 30px 0;
-		overflow: hidden;
-		font-size: 0;
-	}
 
-	.help-block {
-		margin-left: 10rpx;
-		font-size: 25rpx;
-	}
+			.toplicLeft {}
 
-	.upload-imgs li {
-		position: relative;
-		width: 200rpx;
-		height: 200rpx;
-		font-size: 35rpx;
-		display: inline-block;
-		padding: 10rpx;
-		margin-right: 25rpx;
-		border: 2rpx dashed #ccc;
-		text-align: center;
-		vertical-align: middle;
-	}
+			.topicPicker {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				margin-left: 50rpx;
+			}
 
-	.upload-imgs li:hover {
-		border-color: #ffffff;
-	}
+		}
 
-	.upload-imgs .add {
-		display: block;
-		background-color: #ccc;
-		color: #ffffff;
-		height: 200rpx;
-		padding: 8rpx 0;
-	}
+		.btn-div {
+			margin-top: 20rpx;
+			margin-left: 50rpx;
+			margin-right: 50rpx;
+			justify-items: center;
 
-	.upload-imgs .add .iconfont {
-		padding: 10rpx 0;
-		font-size: 40rpx;
-	}
+			.btn {
+				width: 300rpx;
+			}
+		}
 
-	.upload-imgs li:hover .add {
-		background-color: #ffffff;
-	}
 
-	.upload-imgs li .upload {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		width: 200rpx;
-		height: 200rpx;
-	}
-
-	.upload-imgs .img {
-		position: relative;
-		width: 1rpx;
-		height: 200rpx;
-		line-height: 200rpx;
-	}
-
-	.upload-imgs .img img {
-		vertical-align: middle;
-		width: 180rpx;
-		height: 180rpx;
-	}
-
-	.upload-imgs .img .close {
-		display: none;
-	}
-
-	.upload-imgs li:hover .img .close {
-		display: block;
-		position: absolute;
-		right: -20rpx;
-		top: -20rpx;
-		line-height: 1;
-		font-size: 22px;
-		color: #aaa;
 	}
 </style>

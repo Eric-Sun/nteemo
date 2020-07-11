@@ -17,6 +17,11 @@
 			</div>
 
 			<scroll-view class='body' scroll-y @scroll='onScroll($event)' :scroll-top="cursor" enable-back-to-top='true'>
+				<div class="topicList">
+					<div v-for='topic in detailData.topicList' :key='topic.id' class="topic">
+						#{{topic.name}}
+					</div>
+				</div>
 				<div class='title'>
 					<p class='big'>{{detailData.title}}</p>
 				</div>
@@ -207,7 +212,7 @@
 			},
 			// 点击右箭头，往前进一个页面
 			goPage() {
-				if (this.pageNum +1 == this.culculatePageNum) {
+				if (this.pageNum + 1 == this.culculatePageNum) {
 					return;
 				} else if (this.pageNum == 0) {
 					this.includePostContent = 0;
@@ -383,7 +388,7 @@
 					title: '加载中'
 				})
 				var that = this;
-				that.currentReplies=[];
+				that.currentReplies = [];
 				this.$http({
 					act: this.requestAction,
 					pageNum: pageNum, //当等于-1的是从cursor位置读取相关的pageNum，当不等于-1的时候则强行获取该pageNum的数据
@@ -481,19 +486,19 @@
 			handletouchmove: function(event) {
 				let currentX = event.touches[0].pageX;
 				let tx = currentX - this.lastX;
-				console.log("tx="+tx)
+				console.log("tx=" + tx)
 				if (tx > 50) {
 					this.navigateBack();
 					//  this.getList();  //调用列表的方法
 				}
-				if(tx<-50){
+				if (tx < -50) {
 					// 看下一个内容
 				}
 			},
 			handletouchstart: function(event) {
 				// console.log(event)
 				this.lastX = event.touches[0].pageX;
- 			}
+			}
 		},
 		onLoad(option) {
 			this.id = option.postId
@@ -554,7 +559,8 @@
 				cursorTmp: 0,
 				userToken: '',
 				// 左右滑动的坐标
-				lastX: 0			}
+				lastX: 0
+			}
 		}
 	}
 </script>
@@ -593,6 +599,20 @@
 		.body {
 			height: 90vh;
 			width: 100vw;
+
+			.topicList {
+				padding-left: 30rpx;
+				display: flex;
+				flex-direction: row;
+				font-size:30rpx;
+
+
+				&>div:nth-child(2) {
+					margin-left: 10rpx;
+				}
+
+				.topic {}
+			}
 
 			.imgs {
 				padding-left: 30rpx;

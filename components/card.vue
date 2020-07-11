@@ -270,10 +270,11 @@
 				display: flex;
 				flex-direction: row;
 				
+				
+				&>div:nth-child(2){
+					margin-left:10rpx;
+				} 
 				.topic{
-					color:red;
-					width:200rpx;
-					background-color: green;
 				}
 			}
 		}
