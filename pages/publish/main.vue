@@ -169,7 +169,7 @@
 				}, function(res) {
 					if (!res.data.code) {
 						uni.showToast({
-							title: '发帖成功',
+							title: '发帖成功，请等待审核通过',
 							icon: 'none',
 							duration: 2000
 						})
