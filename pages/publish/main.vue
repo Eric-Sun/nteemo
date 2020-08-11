@@ -168,16 +168,19 @@
 					type: 0
 				}, function(res) {
 					if (!res.data.code) {
-						uni.showToast({
-							title: '发帖成功，请等待审核通过',
-							icon: 'none',
-							duration: 2000
+						uni.showModal({
+							title: '提示',
+							content:'发帖成功，请等待审核通过',
+							showCancel:false,
+							success:function(res){
+									that.title = ''
+									that.content = ''
+									uni.switchTab({
+										url: `../index/main`
+									})
+							}
 						})
-						that.title = ''
-						that.content = ''
-						uni.switchTab({
-							url: `../index/main`
-						})
+						
 					} else if (res.data.code == 6) {
 						uni.showToast({
 							title: '您发的标题或内容违规，请修改后重发',
