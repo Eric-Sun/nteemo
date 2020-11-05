@@ -164,7 +164,7 @@
 					title: this.title,
 					content: this.content,
 					imgList: JSON.stringify(imgIdList),
-					topicIdList: JSON.stringify([this.index]),
+					topicIdList: JSON.stringify([this.index+1]),
 					type: 0
 				}, function(res) {
 					if (!res.data.code) {

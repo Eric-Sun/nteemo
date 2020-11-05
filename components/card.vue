@@ -10,6 +10,7 @@
 			</div>
 			<div v-if="item.star==1" class="title-star">【精华帖子】</div>
 			<div v-if="item.auditStatus==1" class="title-auditStatus">审核中</div>
+			<div v-if="item.auditStatus==2" class="title-auditStatusFail">审核未通过</div>
 			<span class="top" v-if="item.auditStatus!=1">
 				<img class="ellipsis" src="@/static/ellipsis.png" :data-postid="item.postId" @click.stop="loadActions($event)" />
 			</span>
@@ -220,6 +221,11 @@
 			.title-auditStatus{
 				position: absolute;
 				right:40rpx;
+			}
+			.title-auditStatusFail{
+				position: absolute;
+				right:40rpx;
+				color:red;
 			}
 
 			.top-xin {
