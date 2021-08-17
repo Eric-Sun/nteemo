@@ -11,9 +11,13 @@
 				 <image :src="banner.imgUrl"></image>
 			 </swiper-item>
 		 </swiper>
-		<video  id="myVideo" :src="videoUrlList[currentIndex].url"
+		<video  id="myVideo" :src="course.data[currentIndex].url"
 		 autoplay=true enable-danmu danmu-btn controls @ended="ended"></video>
 		<!-- <image v-if="!a" src="../../static/bn1.png" @click=""></image> -->
+		
+		<div class="">
+			<div></div>
+		</div>
 	</div>
 </template>
 
@@ -41,7 +45,8 @@
 				videoContext: null,
 				videoUrlList:[],
 				currentIndex:0,
-				bannerInfoList:[]
+				bannerInfoList:[],
+				course:{}
 			}
 		},
 
@@ -61,19 +66,17 @@
 			this.$http({ 
 				act: 'course.get',
 				t: this.t,
-				id:1,
-				dataType: "json",
+				id:1
 			}, function(res) {
-				that.videoUrlList=JSON.parse(res.data.data);
+				that.course=res.data;
+				console.log(that.course);
 			})
 			
 			this.$http({
 				act: 'banner.getInfo',
 				t: this.t,
-				bannerPlanId:1,
-				dataType: "json",
-			}, function(res) {
-				console.log(res.data.data)
+				bannerPlanId:1
+			}, function(res) { 
 				that.bannerInfoList=res.data.data;
 			})
 			

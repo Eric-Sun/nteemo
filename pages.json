@@ -1,6 +1,6 @@
 {
 	"pages": [{
-			"path": "pages/index/main"
+			"path": "pages/forum/main"
 			
 			// "style": {
 			// 	"navigationBarTitleText": "首页",
@@ -106,7 +106,7 @@
 	"tabBar": {
 		"selectedColor": "#41b883",
 		"list": [{
-				"pagePath": "pages/index/main",
+				"pagePath": "pages/forum/main",
 				// "pagePath": "pages/test",
 				"text": "首页",
 				"iconPath": "static/home.png",
@@ -114,7 +114,7 @@
 			},
 			{
 				// "pagePath": "pages/publish/main",
-				"pagePath": "pages/test",
+				"pagePath": "pages/publish/main",
 				"text": "发帖",
 				"iconPath": "static/post.png",
 				"selectedIconPath": "static/post-active.png"
